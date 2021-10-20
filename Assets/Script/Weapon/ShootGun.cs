@@ -7,14 +7,24 @@ public class ShootGun : Weapon
 
     void Awake()
     {
-        this.type = Type.ShootGun;
+        this.type = Type.Rebound;
         AtkDelay = 1.5f;
-        bulletCount = 2;
+        currentbullet = 2;
+        CanhaveMaxCount = 2;
+        HaveBulletInPocket = 10;
     }
 
+    private void Update()
+    {
+
+    }
     public override void Attack()
     {
-        StartCoroutine("ShootGun_");
+        if (currentbullet > 0)
+        {
+            StartCoroutine("ShootGun_");
+            currentbullet--;
+        }
     }
 
     IEnumerator ShootGun_()

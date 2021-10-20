@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1102,6 +1102,8 @@ MonoBehaviour:
   AtkDelay: 0
   Bullet: {fileID: 737479780303648647, guid: 9ef7e84d765207d41a340afdca7377fc, type: 3}
   BulletPos: {fileID: 705060293}
+  HaveBulletInPocket: 0
+  currentbullet: 0
 --- !u!1001 &255219628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1201,6 +1203,8 @@ MonoBehaviour:
   AtkDelay: 1
   Bullet: {fileID: 0}
   BulletPos: {fileID: 0}
+  HaveBulletInPocket: 0
+  currentbullet: 0
 --- !u!65 &255219632
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1358,6 +1362,8 @@ MonoBehaviour:
   AtkDelay: 0.1
   Bullet: {fileID: 0}
   BulletPos: {fileID: 0}
+  HaveBulletInPocket: 0
+  currentbullet: 0
   Ps: {fileID: 1872574209}
   ParticleOb: {fileID: 1872574206}
 --- !u!1 &313568500
@@ -2600,6 +2606,8 @@ MonoBehaviour:
   AtkDelay: 0
   Bullet: {fileID: 1817661616395292268, guid: 6686c679989ec35408dff6d8b4aa2ec5, type: 3}
   BulletPos: {fileID: 705060293}
+  HaveBulletInPocket: 0
+  currentbullet: 0
 --- !u!1 &882297007
 GameObject:
   m_ObjectHideFlags: 0
@@ -3402,6 +3410,8 @@ MonoBehaviour:
   AtkDelay: 0
   Bullet: {fileID: 0}
   BulletPos: {fileID: 0}
+  HaveBulletInPocket: 0
+  currentbullet: 0
 --- !u!65 &1208569722
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3697,6 +3707,8 @@ MonoBehaviour:
   AtkDelay: 0
   Bullet: {fileID: 1620558390}
   BulletPos: {fileID: 705060293}
+  HaveBulletInPocket: 0
+  currentbullet: 0
 --- !u!120 &1579895197
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -4323,6 +4335,8 @@ MonoBehaviour:
   AtkDelay: 0
   Bullet: {fileID: 0}
   BulletPos: {fileID: 0}
+  HaveBulletInPocket: 0
+  currentbullet: 0
 --- !u!65 &1796001958
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4423,6 +4437,8 @@ MonoBehaviour:
   AtkDelay: 0
   Bullet: {fileID: 652154293622026668, guid: ca7d225b3107a47488643945ec12ffc5, type: 3}
   BulletPos: {fileID: 705060293}
+  HaveBulletInPocket: 0
+  currentbullet: 0
 --- !u!1 &1842366893
 GameObject:
   m_ObjectHideFlags: 0
@@ -9480,6 +9496,8 @@ MonoBehaviour:
   AtkDelay: 0
   Bullet: {fileID: 1410637361264434777, guid: ad3cb20bc92f6a34c99674bc07c05ea8, type: 3}
   BulletPos: {fileID: 705060293}
+  HaveBulletInPocket: 0
+  currentbullet: 0
 --- !u!1 &1948059485
 GameObject:
   m_ObjectHideFlags: 0
@@ -9754,6 +9772,8 @@ MonoBehaviour:
   AtkDelay: 0
   Bullet: {fileID: 0}
   BulletPos: {fileID: 0}
+  HaveBulletInPocket: 0
+  currentbullet: 0
 --- !u!1 &2004135549
 GameObject:
   m_ObjectHideFlags: 0
@@ -15744,7 +15764,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6520378759673028578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.94, y: 1, z: 0.83}
+  m_LocalPosition: {x: -8.94, y: 1, z: -4.54}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 7407732515335553827}

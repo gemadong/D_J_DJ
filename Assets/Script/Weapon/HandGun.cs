@@ -7,22 +7,24 @@ public class HandGun : Weapon
 
     void Awake()
     {
-        this.type = Type.HandGun;
+        this.type = Type.Gun;
         AtkDelay = 0.6f;
-        bulletCount = 10;
+        currentbullet = 10;
+        CanhaveMaxCount = 10;
+        HaveBulletInPocket = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public override void Attack()
     {
-        if (bulletCount > 0)
+        if (currentbullet > 0)
         {
             StartCoroutine("Shoot");
-            bulletCount--;
+            currentbullet--;
         }
     }
     IEnumerator Shoot()

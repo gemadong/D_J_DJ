@@ -7,22 +7,24 @@ public class MachineGun : Weapon
 
     void Awake()
     {
-        bulletCount = 27;
-        this.type = Type.MachineGun;
+        currentbullet = 27;
+        CanhaveMaxCount = 27;
+        HaveBulletInPocket = 0;
+        this.type = Type.Gun;
         AtkDelay = 0.15f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public override void Attack()
     {
-        if (bulletCount > 0)
+        if (currentbullet > 0)
         {
             StartCoroutine("Shoot");
-            bulletCount--;
+            currentbullet--;
         }
     }
     IEnumerator Shoot()

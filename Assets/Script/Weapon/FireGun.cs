@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireGun : Weapon
 {
-    private CapsuleCollider CC =null;
+    private CapsuleCollider CC = null;
     [SerializeField] private ParticleSystem Ps = null;
     [SerializeField] private GameObject ParticleOb = null;
     void Awake()
@@ -13,7 +13,11 @@ public class FireGun : Weapon
         CC = Ps.GetComponent<CapsuleCollider>();
         Ps.Stop();
         CC.enabled = false;
-
+        this.type = Type.Gun;
+        AtkDelay = 0.10f;
+        currentbullet = 30;
+        CanhaveMaxCount = 30;
+        HaveBulletInPocket = 0;
     }
 
     // Update is called once per frame
@@ -34,7 +38,7 @@ public class FireGun : Weapon
     }
     public override void Attack()
     {
-       
+
     }
 
 }

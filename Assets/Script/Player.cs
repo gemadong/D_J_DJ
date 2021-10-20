@@ -4,32 +4,33 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]private ParticleSystem Ps = null;
+    [SerializeField] private ParticleSystem Ps = null;
 
-    
+
     private Rigidbody PRb = null;
-    private BoxCollider boxCollider= null;
+    private BoxCollider boxCollider = null;
 
     private Animator PAnima = null; // 하체 애니메이션
     [SerializeField] private GameObject Leg;
-    
-    private Animator BodyAnima=null; //상체 애니메이션
+
+    private Animator BodyAnima = null; //상체 애니메이션
     [SerializeField] private Transform Body;
-    
+
 
     [SerializeField] private Transform Cam;
     [SerializeField] private GameObject Charactor;
 
     [SerializeField] private GameObject[] Weapon = null;
-    [SerializeField] private bool[] HasWeapon=null;         //현재 소지 무기
+    [SerializeField] private bool[] HasWeapon = null;         //현재 소지 무기
     private Weapon equipWeapon = null;                  //장착중인 무기
     private int WeaponIndex = 0;
 
     private bool isSwap = false;
     private bool isAttack = false;
     private bool SweapDelay = false;
+    private bool isReLoding = false; // 총알이 장전중인지 확인
 
-    //private int WeaponNum = 0;
+
 
     private bool isRun = false;
     private bool isGround;  //점프가능 확인
@@ -50,13 +51,61 @@ public class Player : MonoBehaviour
         PAnima = Leg.GetComponentInChildren<Animator>();
         BodyAnima = Body.GetComponent<Animator>();
     }
-    
+
 
     // Update is called once per frame
     void Update()
     {
         LookAt();
         CharactorMotion();
+    }
+    private void LookAt()
+    {
+        //마우스의 이동값 좌표 저장
+        Vector2 mouseDelat = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        Vector3 CamAngle = Cam.rotation.eulerAngles; //카메라 앵글을 변수로 저장
+        float X = CamAngle.x - mouseDelat.y;
+
+        //카메라 상하의 제한
+        if (X < 180f) X = Mathf.Clamp(X, -1f, 35f);
+        else X = Mathf.Clamp(X, 310f, 361f);
+
+        //카메라 회전
+        Cam.rotation = Quaternion.Euler(X, CamAngle.y + mouseDelat.x, CamAngle.z).normalized;
+
+        //캐릭터 상하 회전
+        Body.rotation = Quaternion.Euler(X, CamAngle.y + mouseDelat.x, 0f).normalized;
+        //Debug.Log(Body.rotation.x);
+    }
+    private void CharactorMotion()
+    {
+        WeaponSwap();
+        Move();
+
+        if (WeaponIndex != 0) BodyAnima.SetBool("HasWeapon", true);
+        else BodyAnima.SetBool("HasWeapon", false);
+
+        if (Input.GetKeyDown(KeyCode.Space) && IsGround())
+        {
+            Jump();
+        }
+        if (Input.GetMouseButton(0) && !isSwap)
+        {
+            Attack();
+        }
+
+        if (WeaponIndex > 3 && equipWeapon != null && (Input.GetKeyDown(KeyCode.R) || equipWeapon.currentbullet <= 0) && !isReLoding && equipWeapon.HaveBulletInPocket > 0)
+        {
+            isReLoding = true;
+            Invoke("ReLoadingDelay", 1.0f);
+            Debug.Log("장전중!");
+            BodyAnima.SetTrigger("ReLoding");
+        }
+    }
+    private void ReLoadingDelay()
+    {
+        equipWeapon.ReLoad();
+        isReLoding = false;
     }
 
     private void Move()
@@ -72,62 +121,22 @@ public class Player : MonoBehaviour
         Vector3 MoveDir = Lookforward * MoveX + LookRight * MoveZ;
 
         //플레이어의 forward와 움직임
-            Charactor.transform.forward = Lookforward;
-            this.transform.position += MoveDir * (isRun ? PlayerRunSpeed : PlayerwalkSpeed) * Time.deltaTime;
-        
+        Charactor.transform.forward = Lookforward;
+        this.transform.position += MoveDir * (isRun ? PlayerRunSpeed : PlayerwalkSpeed) * Time.deltaTime;
+
         ////////////////////////////////////////////////
         //애니메이션
 
-        PAnima.SetBool("isWalk", PlayerMove.magnitude!=0);
+        PAnima.SetBool("isWalk", PlayerMove.magnitude != 0);
         PAnima.SetBool("isRun", Input.GetKey(KeyCode.LeftShift));
     }
-
-    private void LookAt()
-    {
-        //마우스의 이동값 좌표 저장
-        Vector2 mouseDelat = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-        Vector3 CamAngle = Cam.rotation.eulerAngles; //카메라 앵글을 변수로 저장
-        float X = CamAngle.x - mouseDelat.y;
-
-        //카메라 상하의 제한
-        if (X < 180f) X = Mathf.Clamp(X, -1f, 35f);
-        else X = Mathf.Clamp(X, 310f, 361f);
-
-        //카메라 회전
-        Cam.rotation = Quaternion.Euler(X, CamAngle.y + mouseDelat.x, CamAngle.z).normalized;
-        
-        //캐릭터 상하 회전
-         Body.rotation = Quaternion.Euler(X, CamAngle.y + mouseDelat.x, 0f).normalized;
-        //Debug.Log(Body.rotation.x);
-    }
-
-    private void CharactorMotion()
-    {
-        WeaponSwap();
-        Move();
-
-        if (WeaponIndex != 0) BodyAnima.SetBool("HasWeapon", true);
-        else BodyAnima.SetBool("HasWeapon", false);
-
-        if (Input.GetKeyDown(KeyCode.Space) && IsGround()) 
-        {
-            Jump();
-        }
-        if (Input.GetMouseButton(0)&&!isSwap)
-        {
-            Attack();
-        }
-
-    }
-
     private void Jump()
     {
-        PRb.velocity = transform.up *  jumpForce;   
+        PRb.velocity = transform.up * jumpForce;
         PAnima.SetTrigger("DoJump");
-        if(!isGround)PAnima.SetBool("isJump", isjump);
+        if (!isGround) PAnima.SetBool("isJump", isjump);
         else PAnima.SetBool("isJump", !isjump);
     }
-
     private bool IsGround()
     {
         //RayCast를 이용하여 플레이어의 아래쪽에 닿는 것이 있는지 확인.
@@ -165,7 +174,7 @@ public class Player : MonoBehaviour
                 WeaponSwapMotion();
             }
         }
-     }
+    }
 
     private void WeaponSwapMotion()
     {
@@ -188,45 +197,43 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
-        if (equipWeapon.type == global::Weapon.Type.SwingWeapon&&!isAttack)
+
+        if (equipWeapon.type == global::Weapon.Type.Hand && !isAttack) { }
+
+        else if (equipWeapon.type == global::Weapon.Type.SwingWeapon && !isAttack&&!isReLoding)
         {
-            isAttack = true;   
+            isAttack = true;
             BodyAnima.SetTrigger("DoSwing");
             StartCoroutine("IsAttack");
         }
-        else if (equipWeapon.type == global::Weapon.Type.Electric && !isAttack)
+        else if (equipWeapon.type == global::Weapon.Type.Electric && !isAttack && !isReLoding)
         {
             isAttack = true;
             BodyAnima.SetTrigger("DoSawing");
             StartCoroutine("IsAttack");
         }
-        else if((equipWeapon.type == global::Weapon.Type.HandGun || equipWeapon.type == global::Weapon.Type.MachineGun) && !isAttack)
+        else if (equipWeapon.type == global::Weapon.Type.Gun && !isAttack && !isReLoding)
         {
             isAttack = true;
             BodyAnima.SetTrigger("DoShoot");
             StartCoroutine("IsAttack");
         }
-        else if (((equipWeapon.type == (global::Weapon.Type.ShootGun)) || (equipWeapon.type ==global::Weapon.Type.bazukar)) && !isAttack)
+        else if (equipWeapon.type == (global::Weapon.Type.Rebound) && !isAttack && !isReLoding)
         {
             isAttack = true;
             BodyAnima.SetTrigger("DoRebound");
             StartCoroutine("IsAttack");
         }
-        else if (((equipWeapon.type == (global::Weapon.Type.FireGun)) || (equipWeapon.type == global::Weapon.Type.LazerGun)) && !isAttack)
-        {
-            isAttack = true;
-            BodyAnima.SetTrigger("DoShoot");
-            StartCoroutine("IsAttack");
-        }
+
+
     }
-    
     IEnumerator IsAttack()
     {
         equipWeapon.Attack();
         yield return new WaitForSeconds(equipWeapon.AtkDelay);
         isAttack = false;
     }
- 
+
     //데미지 받기
     public void Damage(int _dmg)
     {

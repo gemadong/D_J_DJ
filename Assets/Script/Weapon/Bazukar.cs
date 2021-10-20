@@ -7,13 +7,20 @@ public class Bazukar : Weapon
     // Start is called before the first frame update
     void Awake()
     {
-        this.type = Type.bazukar;
+        this.type = Type.Rebound;
         AtkDelay = 3.5f;
+        currentbullet = 2;
+        CanhaveMaxCount = 2;
+        HaveBulletInPocket = 3;
     }
 
     public override void Attack()
     {
-        StartCoroutine("bazukarshoot");
+        if (currentbullet > 0)
+        {
+            StartCoroutine("bazukarshoot");
+            currentbullet--;
+        }
     }
     IEnumerator bazukarshoot()
     {
