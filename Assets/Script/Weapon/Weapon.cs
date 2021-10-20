@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-public enum Type { Hand,SwingWeapon,Electric,HandGun,MachineGun,FireGun,ShootGun,LazerGun,bazukar};
-public Type type =0;
+    public enum Type { Hand, SwingWeapon, Electric, Rebound, Gun };
+    public Type type = 0;
 
-protected float AtkDamage = 0;
-public float AtkDelay = 0f;
-protected BoxCollider AtkRange = null;
+    protected float AtkDamage = 0;
+    public float AtkDelay = 0f;
+    protected BoxCollider AtkRange = null;
 
     public GameObject Bullet = null;
     public Transform BulletPos = null;
 
-    protected int HasMaxBullet = 0;
-    protected int bulletCount = 0;
+    public int HaveBulletInPocket = 0;
+    public int currentbullet = 0;
+    protected int CanhaveMaxCount = 0;
 
-   
+
 
     virtual public void Attack()
-    {    }
+    { }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,5 +35,17 @@ protected BoxCollider AtkRange = null;
     protected virtual void EnomyAttack()
     {
 
+    }
+
+    public void ReLoad()
+    {
+        for (int i = currentbullet; i <= CanhaveMaxCount; i++)
+        {
+            if (HaveBulletInPocket > 0)
+            {
+                currentbullet++;
+                HaveBulletInPocket--;
+            }
+        }
     }
 }
