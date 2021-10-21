@@ -48,4 +48,9 @@ public class Weapon : MonoBehaviour
             }
         }
     }
+
+    public void DamageUp(int AtkDamageUp)
+    {
+        AtkDamage += AtkDamageUp;
+    }
 }

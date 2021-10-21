@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem Ps = null;
-
 
     private Rigidbody PRb = null;
     private BoxCollider boxCollider = null;
@@ -224,8 +222,6 @@ public class Player : MonoBehaviour
             BodyAnima.SetTrigger("DoRebound");
             StartCoroutine("IsAttack");
         }
-
-
     }
     IEnumerator IsAttack()
     {
@@ -233,6 +229,12 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(equipWeapon.AtkDelay);
         isAttack = false;
     }
+
+    public void BuyWeapon(int Num)
+    {
+        HasWeapon[Num] = true;
+    }
+
 
     //데미지 받기
     public void Damage(int _dmg)
