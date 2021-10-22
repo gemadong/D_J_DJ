@@ -7,6 +7,9 @@ public class Turret : MonoBehaviour
     //터렛이 회전할 바디부분
     [SerializeField] private Transform TurretBody = null;
 
+    // 터렛의 상하 회전을 담당
+    [SerializeField] private Transform TurretHead = null;
+
     // 터렛의 사정거리
     [SerializeField] private float TurretRange = 0f;
 
@@ -30,6 +33,7 @@ public class Turret : MonoBehaviour
         if(FinalTarget == null)
         {
             TurretBody.Rotate((new Vector3(0, 45f, 0)*Time.deltaTime));
+            TurretHead.Rotate((new Vector3(0, 45f, 0) * Time.deltaTime));
             //타겟이 없을 때 터렛 회전
         }
         else
@@ -37,13 +41,21 @@ public class Turret : MonoBehaviour
             Quaternion LookTarget = Quaternion.LookRotation(FinalTarget.position-this.transform.position);
             //타겟과 자신의 위치 값을 통해 회전값을 준다
             Vector3 t_euler = Quaternion.RotateTowards(TurretBody.rotation, LookTarget, SpinSpeed*Time.deltaTime).eulerAngles;
-
-            float XRot = t_euler.x;
+            Vector3 t_eulerX = Quaternion.RotateTowards(TurretHead.rotation, LookTarget, SpinSpeed * Time.deltaTime).eulerAngles;
+            float XRot = t_eulerX.x;
             if (XRot > 180f) XRot = Mathf.Clamp(XRot, 310f, 361f);
-            else XRot = Mathf.Clamp(XRot, -1, 20);
+            else XRot = Mathf.Clamp(XRot, -1, 60);
+
+
+
+
             //터렛의 X축 회전에 제한을 두어서 360도로 돌아가는 것을 막았다.
 
-            TurretBody.rotation = Quaternion.Euler(XRot, t_euler.y, 0);
+            TurretBody.rotation = Quaternion.Euler(0, t_euler.y, 0);
+           TurretHead.rotation =Quaternion.Euler(XRot, t_euler.y,0);
+           
+            Debug.Log("x축"+TurretHead.rotation.eulerAngles.x);
+           // Debug.Log("y축" + TurretHead.rotation.y);
         }
 
     }
