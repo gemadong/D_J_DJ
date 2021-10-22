@@ -8,7 +8,7 @@ public class Hammer : Weapon
     void Awake()
     {
         this.type = Type.SwingWeapon;
-        AtkDamage = 3;
+        AtkDamage = 3f;
         AtkDelay = 1.3f;
         AtkRange = GetComponent<BoxCollider>();
     }

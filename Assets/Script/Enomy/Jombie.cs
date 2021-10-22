@@ -8,7 +8,7 @@ public class Jombie : MonoBehaviour
     public float currentTime = 1.0f; //누적시간
     public float attackDelay = 1.0f; //공격 딜레이
     public int attackPower = 5; //공격력
-    public int hp = 15; //좀비 체력
+    public float hp = 15; //좀비 체력
     public Player player;
     public float sight=2.5f;
     public float atkRng=2.5f;
@@ -109,7 +109,7 @@ public class Jombie : MonoBehaviour
         }
     }
     
-    protected virtual void Damage(int _dmg)
+    public void Damage(float _dmg)
     {
         hp -= _dmg;
         if (hp == 0) Destroy(gameObject);

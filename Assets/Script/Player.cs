@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     private bool isGround;  //점프가능 확인
     private bool isjump = true;
     private float jumpForce = 7.0f;
-    private int hp = 1000000000;
+    private float hp = 1000000000f;
     [SerializeField] float PlayerwalkSpeed = 0f;
     [SerializeField] float PlayerRunSpeed = 0f;
 
@@ -240,7 +240,6 @@ public class Player : MonoBehaviour
     public void Damage(int _dmg)
     {
         hp -= _dmg;
-        Debug.Log(hp);
         if (hp <= 0) Destroy(gameObject);
     }
     IEnumerator poison()

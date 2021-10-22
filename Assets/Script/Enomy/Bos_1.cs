@@ -74,6 +74,7 @@ public class Bos_1 : MonoBehaviour
     {
         if (delaytime >= 10f)
         {
+            BosAni.Play("Jump");
             rigid.AddForce(transform.up * 15, ForceMode.Impulse);
             delaytime = 0;
         }

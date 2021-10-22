@@ -27,7 +27,7 @@ public class Weapon : MonoBehaviour
     {
         if (other.CompareTag("Zombie"))
         {
-            other.GetComponent<Jombie>().Attacked();
+            other.GetComponent<Jombie>().Damage(AtkDamage);
             Debug.Log("АјАн!");
         }
     }

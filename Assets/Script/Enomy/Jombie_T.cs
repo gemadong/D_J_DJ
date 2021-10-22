@@ -7,6 +7,6 @@ public class Jombie_T : Jombie
     protected override void Awake()
     {
         base.Awake();
-        hp = 30;
+        hp = 30f;
     }
 }
