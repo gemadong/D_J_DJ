@@ -68,13 +68,13 @@ public class Jombie : MonoBehaviour
         Vector3 moveVector = player.transform.position - transform.position;
         if (moveVector.magnitude > atkRng)
         {
-            ZomAni.SetBool("isWalk", true);
+            //ZomAni.SetBool("isWalk", true);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.LookRotation(moveVector), 5 * Time.deltaTime);
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
         else
         {
-            ZomAni.SetBool("isWalk", false);
+            //ZomAni.SetBool("isWalk", false);
             state = JombieState.Attack; 
         }
     }
@@ -90,7 +90,7 @@ public class Jombie : MonoBehaviour
             if (currentTime > attackDelay)
             {
                 Debug.Log("어택!");
-                ZomAni.SetBool("isAtt", true);
+                //ZomAni.SetBool("isAtt", true);
                 // 플레이어에 맞게 수정 
                 player.Damage(attackPower);
                 currentTime = 0;
@@ -100,7 +100,7 @@ public class Jombie : MonoBehaviour
         //아니면 다시 플레이어에게 이동
         else
         {
-            ZomAni.SetBool("isAtt", false);
+            //ZomAni.SetBool("isAtt", false);
             state = JombieState.Follow;
             currentTime = 0;
             isAttack = true;
