@@ -2,54 +2,109 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class JombieManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] jombieprefab = null;
-    private float interval = 3f;
     public Player pplayer = null;
-    int _X;
+    float StageTime = 7f;
+    float delayTime = 1f;
+    int X;
     float Xrange = 0;
-    int _Z;
     float Zrange = 0;
+    GameObject[] jombie = null;
 
+    public enum Stage
+    {
+        A,B,C,D,E
+    }
+    public Stage stage;
     private void Start()
     {
-        _X = Random.Range(0, 2);
-        _Z = Random.Range(0, 2);
-        InvokeRepeating("Instan_x", interval, interval);
-        InvokeRepeating("Instan_z", interval, interval);
+        if (GameManager.isNight)
+        {
+           delayTime -= Time.deltaTime;
+            switch (stage)
+            {
+                case Stage.A:
+                    A();
+                    break;
+                case Stage.B:
+                    B();
+                    break;
+                case Stage.C:
+                    C();
+                    break;
+                case Stage.D:
+                    D();
+                    break;
+                case Stage.E:
+                    E();
+                    break;
+            }
+        }
     }
 
-
-    public void Instan_x()
+    private void A()
     {
-        for (int i = 0; i < 2; i++)
+        for(int i =0;i<5; i++)
         {
-            if (_X == 0) Xrange = 50f;
+            if(delayTime <= 0)
+            {
+                ZomN();
+                delayTime = 1f;
+            }
+        }
+
+        if (StageTime <= 0)
+        { 
+            GameManager.isNight = false;
+            StageTime = 7f;
+            stage = Stage.B;
+        }
+    }
+    private void B()
+    {
+
+    }
+    private void C()
+    {
+
+    }
+    private void D()
+    {
+
+    }
+    private void E()
+    {
+
+    }
+    void ZomN()
+    {
+        X = Random.Range(0, 4);
+        if (X < 2)
+        {
+            if (X == 0) Xrange = 50f;
             else Xrange = -50f;
-            int index = Random.Range(0, 5);
-            GameObject jombie = Instantiate(jombieprefab[index]);
+            GameObject jombie = Instantiate(jombieprefab[0]);
             jombie.GetComponent<Jombie>().player = pplayer;
             float posZ = Random.Range(-50f, 50f);
             Vector3 pos = new Vector3(Xrange, 0f, posZ);
             jombie.transform.position = pos;
-            _X = Random.Range(0, 2);
+            X = Random.Range(0, 4);
         }
-    }
-    public void Instan_z()
-    {
-        for (int i = 0; i < 2; i++)
+        else
         {
-            if (_Z == 0) Zrange = 50f;
+            if (X == 2) Zrange = 50f;
             else Zrange = -50f;
-            int index = Random.Range(0, 5);
-            GameObject jombie = Instantiate(jombieprefab[index]);
+            GameObject jombie = Instantiate(jombieprefab[0]);
             jombie.GetComponent<Jombie>().player = pplayer;
-
             float posX = Random.Range(-50f, 50f);
             Vector3 pos = new Vector3(posX, 0f, Zrange);
             jombie.transform.position = pos;
-            _Z = Random.Range(0, 2);
+            X = Random.Range(0, 4);
         }
     }
+
+
 }

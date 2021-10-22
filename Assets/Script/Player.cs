@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     private bool isGround;  //점프가능 확인
     private bool isjump = true;
     private float jumpForce = 7.0f;
-    private int hp = 100;
+    private int hp = 1000000000;
     [SerializeField] float PlayerwalkSpeed = 0f;
     [SerializeField] float PlayerRunSpeed = 0f;
 

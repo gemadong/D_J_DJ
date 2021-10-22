@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Jombie_T : Jombie
 {
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         hp = 30;
     }
 }

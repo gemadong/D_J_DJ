@@ -5,9 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public Transform Sun = null;
+    public GameObject[] Cam = null;
     public static GameManager instance;
     public List<Player> players;
-    //bool isNight;
+    public static bool isNight = true;
+    public float DayTime = 5f;
+
+    public int StageNum = 1;
 
     private void Awake()
     {
@@ -24,27 +28,37 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        
+        if (isNight)
         {
             Debug.Log("¹ã!");
             Night();
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!isNight)
         {
+            Debug.Log(DayTime);
             Debug.Log("³·!");
+            
             Day();
         }
     }
     void Night()
     {
-        //isNight = true;
+        Cam[0].SetActive(true);
+        Cam[1].SetActive(false);
         Vector3 rotNight = new Vector3(-90, 0, 0);
         Sun.transform.rotation = Quaternion.Euler(rotNight);
     }
     void Day()
     {
-        //isNight = false;
+        Cam[0].SetActive(false);
+        Cam[1].SetActive(true);
         Vector3 rotDay = new Vector3(45, 45, 0);
         Sun.transform.rotation = Quaternion.Euler(rotDay);
+        if (DayTime < 0)
+        {
+            Night();
+            DayTime = 5f;
+        }
     }
 }

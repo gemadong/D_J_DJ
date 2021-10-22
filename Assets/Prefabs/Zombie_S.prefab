@@ -291,11 +291,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  currentTime: 1
+  attackDelay: 1
   attackPower: 5
   hp: 15
   player: {fileID: 0}
-  sight: 1
-  atkRng: 1
+  sight: 2.5
+  atkRng: 2.5
+  ZomAni: {fileID: 0}
+  Rb: {fileID: 0}
   state: 0
 --- !u!65 &984510185566706480
 BoxCollider:
@@ -308,8 +312,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.51, z: 0}
+  m_Size: {x: 0.82, y: 2.11, z: 0.51}
+  m_Center: {x: 0, y: 0.57, z: 0}
 --- !u!54 &984510185566706485
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -322,7 +326,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0

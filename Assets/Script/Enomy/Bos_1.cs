@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bos_1 : MonoBehaviour
 {
-    int Hp = 100;
+    //int Hp = 100;
     Animator BosAni;
     public Transform target;
     private float bosSpeed = 5f;

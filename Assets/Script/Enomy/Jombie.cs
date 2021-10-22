@@ -5,24 +5,24 @@ using UnityEngine;
 public class Jombie : MonoBehaviour
 {
     public float speed = 8f;
-    private float currentTime = 2.0f; //누적시간
-    private float attackDelay = 2.0f; //공격 딜레이
+    public float currentTime = 1.0f; //누적시간
+    public float attackDelay = 1.0f; //공격 딜레이
     public int attackPower = 5; //공격력
     public int hp = 15; //좀비 체력
     public Player player;
-    private float sight=2f;
-    private float atkRng=2f;
-    Animator ZomAni;
-    private Rigidbody Rb = null;
+    public float sight=2.5f;
+    public float atkRng=2.5f;
+    public Animator ZomAni;
+    public Rigidbody Rb = null;
 
     private bool isAttack = true;
     public enum JombieState
     {
-        Follow, Attack, Die
+        Follow, Attack, Die, Jump
     }
     public JombieState state;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         ZomAni = GetComponent<Animator>();
         Rb = GetComponent<Rigidbody>();
@@ -42,9 +42,11 @@ public class Jombie : MonoBehaviour
             case JombieState.Die:
                 Die();
                 break;
+            
         }
     }
-    private void FindClosestPlayer()
+    //멀티중 가장 가까이 있는 플레이어 찾는 함수
+    public void FindClosestPlayer()
     {
         float tempDis = float.PositiveInfinity;
         Player tempPlayer = null;
@@ -66,15 +68,16 @@ public class Jombie : MonoBehaviour
     protected virtual void Follow()
     {
         Vector3 moveVector = player.transform.position - transform.position;
+        moveVector.y = 0;
         if (moveVector.magnitude > atkRng)
         {
-            //ZomAni.SetBool("isWalk", true);
+            ZomAni.SetBool("isWalk", true);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.LookRotation(moveVector), 5 * Time.deltaTime);
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
         else
         {
-            //ZomAni.SetBool("isWalk", false);
+            ZomAni.SetBool("isWalk", false);
             state = JombieState.Attack; 
         }
     }
@@ -84,13 +87,12 @@ public class Jombie : MonoBehaviour
         
         if (Vector3.Distance(transform.position, player.transform.position) < sight)
         {
-            if (isAttack) currentTime = 2.0f;
+            if (isAttack) currentTime = 1.0f;
             //1초 마다 플레이어 공격
             currentTime += Time.deltaTime;
             if (currentTime > attackDelay)
             {
-                Debug.Log("어택!");
-                //ZomAni.SetBool("isAtt", true);
+                ZomAni.SetBool("isAtt", true);
                 // 플레이어에 맞게 수정 
                 player.Damage(attackPower);
                 currentTime = 0;
@@ -100,7 +102,7 @@ public class Jombie : MonoBehaviour
         //아니면 다시 플레이어에게 이동
         else
         {
-            //ZomAni.SetBool("isAtt", false);
+            ZomAni.SetBool("isAtt", false);
             state = JombieState.Follow;
             currentTime = 0;
             isAttack = true;

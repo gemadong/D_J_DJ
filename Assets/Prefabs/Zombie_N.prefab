@@ -666,9 +666,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  currentTime: 1
+  attackDelay: 1
   attackPower: 5
   hp: 15
   player: {fileID: 0}
+  sight: 2.5
+  atkRng: 2.5
+  ZomAni: {fileID: 0}
+  Rb: {fileID: 0}
   state: 0
 --- !u!54 &7064745828405938601
 Rigidbody:
@@ -682,7 +688,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
