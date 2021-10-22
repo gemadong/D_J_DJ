@@ -22,6 +22,8 @@ public class Turret : MonoBehaviour
     //터렛이 목표물을 향해 회전할 스피드
     [SerializeField]private float SpinSpeed = 0;
 
+    private bool FindTarget = false;
+
     void Start()
     {
         InvokeRepeating("SearchEnomy", 0f, 0.5f);
@@ -32,6 +34,7 @@ public class Turret : MonoBehaviour
     {
         if(FinalTarget == null)
         {
+
             TurretBody.Rotate((new Vector3(0, 45f, 0)*Time.deltaTime));
             TurretHead.Rotate((new Vector3(0, 45f, 0) * Time.deltaTime));
             //타겟이 없을 때 터렛 회전
@@ -53,8 +56,6 @@ public class Turret : MonoBehaviour
 
             TurretBody.rotation = Quaternion.Euler(0, t_euler.y, 0);
            TurretHead.rotation =Quaternion.Euler(XRot, t_euler.y,0);
-           
-            Debug.Log("x축"+TurretHead.rotation.eulerAngles.x);
            // Debug.Log("y축" + TurretHead.rotation.y);
         }
 
