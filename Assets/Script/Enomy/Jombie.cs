@@ -109,10 +109,10 @@ public class Jombie : MonoBehaviour
         }
     }
     
-    public void Damage(float _dmg)
+    public void Damage(int _dmg)
     {
         hp -= _dmg;
-        if (hp == 0) Destroy(gameObject);
+        if (hp <= 0) Destroy(gameObject);
     }
 
     //플레이어에게 데미지 받는 함수
@@ -146,5 +146,10 @@ public class Jombie : MonoBehaviour
         Rb.AddForce(Pos*10.0f, ForceMode.Impulse);
         Debug.Log("공격 받았다!!");
     }
-    
+
+    private void OnDestroy()
+    {
+        GameManager.instance.PlayerKill();
+    }
+
 }

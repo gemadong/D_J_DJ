@@ -28,8 +28,6 @@ public class Player : MonoBehaviour
     private bool SweapDelay = false;
     private bool isReLoding = false; // 총알이 장전중인지 확인
 
-
-
     private bool isRun = false;
     private bool isGround;  //점프가능 확인
     private bool isjump = true;
@@ -38,7 +36,9 @@ public class Player : MonoBehaviour
     [SerializeField] float PlayerwalkSpeed = 0f;
     [SerializeField] float PlayerRunSpeed = 0f;
 
-
+    private int ZombieSpawnCount = 20;
+    private int PlayerKill = 0;
+    private int Stage = 0;
 
     void Awake()
     {
@@ -54,6 +54,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PlayerKill == ZombieSpawnCount) StageClear();
+
         LookAt();
         CharactorMotion();
     }
@@ -260,6 +262,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void StageClear()
+    {
+        ZombieSpawnCount += 5;
+        Stage++;
+        PlayerKill = 0;
+    }
 
 
 }

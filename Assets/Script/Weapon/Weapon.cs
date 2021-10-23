@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
     public enum Type { Hand, SwingWeapon, Electric, Rebound, Gun };
     public Type type = 0;
 
-    protected float AtkDamage = 0;
+    protected int AtkDamage = 0;
     public float AtkDelay = 0f;
     protected BoxCollider AtkRange = null;
 

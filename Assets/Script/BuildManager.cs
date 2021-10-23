@@ -8,22 +8,21 @@ public class Craft
     public string craftname;
     public GameObject previewCraft; //미리보기 프리펩
     public GameObject BuildCraft; // 실제 지어질 프리펩
-    public int HasTurretCount = 2;
+    public int HasTurretCount  = 0;
 }
 public class BuildManager : MonoBehaviour
 {
     [SerializeField] private Craft[] craft = null;
 
     [SerializeField] private Camera _camera = null;
-    private GameObject PreviewPrefab = null;
-    private GameObject InsPrefab = null;
-    private bool isActivatePreview = false;
-    private bool OnClickTurret = false;
-    Vector3 MousePos;
 
+    private GameObject PreviewPrefab = null;    //Craft를 담을 변수와 미리보기에 사용할 변수 선언
+    private GameObject InsPrefab = null;
+    
+    private bool isActivatePreview = false;
+    Vector3 MousePos;
     //
     private RaycastHit hitinfo;
-    private LayerMask _layerMask;
     Vector3 _location;
     private void Update()
     {
@@ -49,7 +48,6 @@ public class BuildManager : MonoBehaviour
                 Instantiate(InsPrefab,_location ,Quaternion.identity);
                 Destroy(PreviewPrefab);
                 isActivatePreview = false;
-         
             }
         }
     }

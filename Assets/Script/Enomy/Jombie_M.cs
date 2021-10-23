@@ -14,6 +14,7 @@ public class Jombie_M : Jombie
         {
             DieMotion();
         }
+       
     }
 
     void DieMotion()

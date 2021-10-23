@@ -5,25 +5,37 @@ using UnityEngine;
 public class Sawing : Weapon
 {
 
+    private bool isAtk = false;
         void Awake()
         {
             this.type = Type.Electric;
-            AtkDamage = 0.3f;
-            AtkDelay = 0.1f;
+            AtkDamage = 1;
+            AtkDelay = 1.0f;
             AtkRange = GetComponent<BoxCollider>();
+            AtkRange.enabled = false;
         }
     
 
     // Update is called once per frame
     void Update()
     {
-        Attack();    
     }
 
     public override void Attack()
     {
-        if (Input.GetMouseButtonDown(0)) AtkRange.enabled = true;
-        else if (Input.GetMouseButtonUp(0)) AtkRange.enabled = false;
+        StartCoroutine("SawingAtk");
+
     }
+
+    IEnumerator SawingAtk()
+    {
+
+        AtkRange.enabled = true;
+        yield return new WaitForSeconds(0.6f);
+        AtkRange.enabled = false ;
+    }
+
+
+
 
 }

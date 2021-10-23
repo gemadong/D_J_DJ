@@ -8,6 +8,7 @@ public class HandGun : Weapon
     void Awake()
     {
         this.type = Type.Gun;
+        AtkDamage = 3;
         AtkDelay = 0.6f;
         currentbullet = 10;
         CanhaveMaxCount = 10;
@@ -31,5 +32,6 @@ public class HandGun : Weapon
     {
         yield return new WaitForSeconds(0.1f);
         GameObject bullet = Instantiate(Bullet, BulletPos.position, BulletPos.rotation);
+        bullet.GetComponent<Bullet>().Damage = AtkDamage;
     }
 }

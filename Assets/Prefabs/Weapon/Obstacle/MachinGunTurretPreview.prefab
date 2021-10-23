@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 7704659459019927660}
   - component: {fileID: 7704659459019927661}
   m_Layer: 0
-  m_Name: TurretPreview
+  m_Name: MachinGunTurretPreview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

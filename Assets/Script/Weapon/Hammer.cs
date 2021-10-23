@@ -8,10 +8,12 @@ public class Hammer : Weapon
     void Awake()
     {
         this.type = Type.SwingWeapon;
-        AtkDamage = 3f;
+        AtkDamage = 3;
         AtkDelay = 1.3f;
         AtkRange = GetComponent<BoxCollider>();
+        AtkRange.enabled = false;
     }
+
       override public void Attack()
     {
         StartCoroutine("SwingAttack");
@@ -19,7 +21,7 @@ public class Hammer : Weapon
     IEnumerator SwingAttack()
     {
         this.AtkRange.enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         this.AtkRange.enabled = true;
         yield return new WaitForSeconds(0.5f);
         this.AtkRange.enabled = false;

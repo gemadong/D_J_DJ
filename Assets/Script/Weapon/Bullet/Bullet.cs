@@ -26,7 +26,7 @@ private Rigidbody Brb = null;
     {
         if (other.CompareTag("Zombie")) 
         {
-            other.GetComponent<Jombie>().HitJombie(Damage);
+            other.GetComponent<Jombie>().Damage(Damage);
             Attack();
         }
 

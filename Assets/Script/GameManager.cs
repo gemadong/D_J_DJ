@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager Instance = null;
+    //게임 스테이지 관리를 위한 싱글턴
+
     public Transform Sun = null;
     public GameObject[] Cam = null;
     public static GameManager instance;
@@ -26,8 +29,9 @@ public class GameManager : MonoBehaviour
     public List<int> zombieList;
     public List<int> bossList;
 
+    private int ZombieCount = 2;
+    private int KillZombieCount = 0;
 
-    
     private void Awake()
     {
         //<<<<<<< Updated upstream
@@ -35,16 +39,26 @@ public class GameManager : MonoBehaviour
         //=======
         //        //Cursor.lockState = CursorLockMode.Locked;
         //>>>>>>> Stashed changes
-        if (instance == null) instance = this;
+        if (null == Instance) instance = this;
         else instance = this;
+
         //isNight = true;
         zombieList = new List<int>();
         Night();
+
     }
+
+    private void Update()
+    {
+        Debug.Log(KillZombieCount);
+        Debug.Log(ZombieCount);
+        StageClear();
+    }
+
     void Night()
     {
-        Cam[0].SetActive(true);
-        Cam[1].SetActive(false);
+        //Cam[0].SetActive(true);
+        //Cam[1].SetActive(false);
         Vector3 rotNight = new Vector3(-90, 0, 0);
         Sun.transform.rotation = Quaternion.Euler(rotNight);
         StageStart();
@@ -135,7 +149,7 @@ public class GameManager : MonoBehaviour
                 int ranZone = Random.Range(0, 4);
                 if (ranZone < 2)
                 {
-                    Debug.Log("소환");
+                    //Debug.Log("소환");
                     if (ranZone == 0) Xrange = 50f;
                     else Xrange = -50f;
                     GameObject jombie = Instantiate(zombies[zombieList[0]]);
@@ -148,7 +162,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("소환");
+                    //Debug.Log("소환");
                     if (ranZone == 2) Zrange = 50f;
                     else Zrange = -50f;
                     GameObject jombie = Instantiate(zombies[zombieList[0]]);
@@ -168,4 +182,20 @@ public class GameManager : MonoBehaviour
             StageEnd();
         }
     }
+
+    private void StageClear() 
+    {
+        if (KillZombieCount == ZombieCount) Debug.Log("클리어!");
+    }
+
+    public int ZombieSpownCount()
+    {
+        return ZombieCount;
+    }
+
+    public void PlayerKill()
+    {
+        KillZombieCount++;
+    }
+  
 }

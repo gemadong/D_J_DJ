@@ -34,7 +34,6 @@ public class CraftPreview : MonoBehaviour
 
     private void SetColor(Material mat)
     {
-        Debug.Log("1´Ü°è");
         foreach(Transform thistransform in transform)
         {
             var newMaterials = new Material[thistransform.GetComponent<Renderer>().materials.Length];
