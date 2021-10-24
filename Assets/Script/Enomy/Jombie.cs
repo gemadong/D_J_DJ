@@ -78,6 +78,7 @@ public class Jombie : MonoBehaviour
             ZomAni.SetBool("isWalk", true);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.LookRotation(moveVector), 5 * Time.deltaTime);
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            
         }
         else
         {
@@ -118,6 +119,7 @@ public class Jombie : MonoBehaviour
         hp -= _dmg;
         if (hp <= 0)
         {
+            state = JombieState.Die;
             Destroy(gameObject);
             if (onDeath != null) onDeath();
         }
@@ -136,7 +138,7 @@ public class Jombie : MonoBehaviour
         else
         {
             state = JombieState.Die;
-            Die();
+         
         }
     }
     protected virtual IEnumerator Die()

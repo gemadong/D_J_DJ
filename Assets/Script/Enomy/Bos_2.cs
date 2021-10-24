@@ -10,10 +10,13 @@ public class Bos_2 : MonoBehaviour
     public Transform target;
     private float bosSpeed=5f;
     bool isattack;
+    int hp = 100;
+    Animator bosani_2;
 
     private void Start()
     {
         isattack = true;
+        bosani_2 = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -26,8 +29,10 @@ public class Bos_2 : MonoBehaviour
 
     public void Fire()
     {
+        bosani_2.SetBool("Att1", true);
         GameObject poison = Instantiate(PoisonPrefab, transform.position, Quaternion.identity);
         poison.GetComponent<Poison>().Shoot(transform.forward);
+        bosani_2.SetBool("Att1", false);
     }
     void RotateBos()
     {
@@ -40,16 +45,18 @@ public class Bos_2 : MonoBehaviour
         if ((target.position - transform.position).magnitude >= 10)
         {
             transform.Translate(Vector3.forward * bosSpeed * Time.deltaTime);
-
+            bosani_2.SetBool("Walk", true);
         }
         if ((target.position - transform.position).magnitude < 10)
         {
+            bosani_2.SetBool("Walk", false);
             if (delayTime_A >= 5f) { StartCoroutine("Attack");; delayTime_A = 0; }
         }
     }
     IEnumerator Attack()
     {
         isattack = false;
+        bosani_2.SetBool("Att2", true);
         for (int i =-10;i<120; i+=3)
         {
             Vector3 roR = new Vector3(0, i, 0);
@@ -59,5 +66,15 @@ public class Bos_2 : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         isattack = true;
+        bosani_2.SetBool("Att2", false);
+    }
+    public void Damage(int _dmg)
+    {
+        hp -= _dmg;
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+            //if (onDeath != null) onDeath();
+        }
     }
 }

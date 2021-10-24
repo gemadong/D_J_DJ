@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public List<Player> players;
     public static bool isNight = true;
     public float DayTime = 5f;
-    private int stage=0;
+    public int stage=0;
 
     /// <summary>
     /// //////////////////////////////////////

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Bos_1 : MonoBehaviour
 {
-    //int Hp = 100;
+    int hp = 100;
     Animator BosAni;
     public Transform target;
     private float bosSpeed = 5f;
     private Rigidbody rigid;
     bool Actswitch; //액션 스위치
     float delaytime = 0; //점프 딜레이
+
 
     private void Start()
     {
@@ -79,5 +80,13 @@ public class Bos_1 : MonoBehaviour
             delaytime = 0;
         }
     }
-
+    public void Damage(int _dmg)
+    {
+        hp -= _dmg;
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+            //if (onDeath != null) onDeath();
+        }
+    }
 }
