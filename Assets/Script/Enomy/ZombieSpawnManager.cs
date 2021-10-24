@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ZombieSpawnManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] ZombieSort = null;
+  
+    public GameObject _jombie;
+
+
     private bool SpawnFinish = false;
     private int ZombieNcount = 20;
     private float ZombieNProbablity = 0;
@@ -13,20 +16,29 @@ public class ZombieSpawnManager : MonoBehaviour
     private float ZombieMProbablity = 0;
     private float ZombieJProbablity = 0;
 
+    private bool NightStart = false;
+
+    List<Jombie> Zombies = new List<Jombie>();
+
     void Start()
     {
-        SpawnJombie();
+       Invoke("SpawnJombie",2f);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log("좀비개수" + Zombies.Count);
+        if (Zombies.Count == 0 && NightStart == true) GameManager.instance.StageClear();
     }
+
 
     private void SpawnJombie()
     {
-        GameObject Zombie = Instantiate(ZombieSort[0], this.transform.position, Quaternion.identity);
+        GameObject Zom = Instantiate(_jombie, this.transform.position, Quaternion.identity);
+        Zombies.Add(Zom.GetComponent<Jombie>());
 
+        Zom.GetComponent<Jombie>().onDeath += () => Zombies.Remove(Zom.GetComponent<Jombie>());
+        NightStart = true;
     }
 }

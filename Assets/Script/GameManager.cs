@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public List<Player> players;
     public static bool isNight = true;
     public float DayTime = 5f;
-    public int stage=1;
+    private int stage=1;
     public bool isBattle;
     public float Zrange;
     public float Xrange;
@@ -44,15 +44,15 @@ public class GameManager : MonoBehaviour
 
         //isNight = true;
         zombieList = new List<int>();
-        Night();
+      //  Night();
 
     }
 
     private void Update()
     {
-        Debug.Log(KillZombieCount);
-        Debug.Log(ZombieCount);
-        StageClear();
+//        Debug.Log(KillZombieCount);
+//        Debug.Log(ZombieCount);
+        
     }
 
     void Night()
@@ -183,9 +183,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void StageClear() 
+    public void StageClear() 
     {
-        if (KillZombieCount == ZombieCount) Debug.Log("클리어!");
+      Debug.Log("클리어!");
     }
 
     public int ZombieSpownCount()
@@ -196,6 +196,11 @@ public class GameManager : MonoBehaviour
     public void PlayerKill()
     {
         KillZombieCount++;
+    }
+
+    public int StageNum()
+    {
+        return stage;
     }
   
 }

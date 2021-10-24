@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Jombie : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Jombie : MonoBehaviour
     public float atkRng=2.5f;
     public Animator ZomAni;
     public Rigidbody Rb = null;
+    public event Action onDeath;
 
     private bool isAttack = true;
     public enum JombieState
@@ -112,8 +114,12 @@ public class Jombie : MonoBehaviour
     public void Damage(int _dmg)
     {
         hp -= _dmg;
-        if (hp <= 0) Destroy(gameObject);
-    }
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+            if (onDeath != null) onDeath();
+        }
+     }
 
     //플레이어에게 데미지 받는 함수
     public void HitJombie(int hitPower)
@@ -137,6 +143,7 @@ public class Jombie : MonoBehaviour
         //2초가 지난 후 사라짐.  
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
+
     }
     
     public void Attacked()

@@ -2353,7 +2353,6 @@ MonoBehaviour:
   players:
   - {fileID: 577518751}
   DayTime: 5
-  stage: 1
   isBattle: 1
   Zrange: 0
   Xrange: 0
@@ -6236,7 +6235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572051791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7610922, y: 1.8444538, z: 2.4567406}
+  m_LocalPosition: {x: 6.3, y: 1.8444538, z: 2.4567406}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6254,8 +6253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37a99dcba508b846b0f504b9e2288ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ZombieSort:
-  - {fileID: 7064745828405938595, guid: 61760e32164468d4cb471350a65bfdd9, type: 3}
+  _jombie: {fileID: 7064745828405938595, guid: 61760e32164468d4cb471350a65bfdd9, type: 3}
 --- !u!1001 &1579895192
 PrefabInstance:
   m_ObjectHideFlags: 0
