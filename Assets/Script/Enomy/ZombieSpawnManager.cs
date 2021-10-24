@@ -5,40 +5,64 @@ using UnityEngine;
 public class ZombieSpawnManager : MonoBehaviour
 {
   
-    public GameObject _jombie;
+    [SerializeField] private GameObject[] ZombieSort = null;
+    [SerializeField] private GameObject[] ZombieBossSort = null;
+    [SerializeField] private Transform[] ZombieSpawnPos = null;
+    // [SerializeField] private GameObject Player = null;
+    public GameObject player;
 
 
-    private bool SpawnFinish = false;
-    private int ZombieNcount = 20;
-    private float ZombieNProbablity = 0;
-    private float ZombieSProbablity = 0;
-    private float ZombieTProbablity = 0;
-    private float ZombieMProbablity = 0;
-    private float ZombieJProbablity = 0;
+    public bool SpawnFinish = false;
+    private int ZombieSortNum = 1;
+    private int StageNum = 0;
 
-    private bool NightStart = false;
+
+
 
     List<Jombie> Zombies = new List<Jombie>();
 
     void Start()
     {
-       Invoke("SpawnJombie",2f);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("좀비개수" + Zombies.Count);
-        if (Zombies.Count == 0 && NightStart == true) GameManager.instance.StageClear();
+        if (Zombies.Count == 0 && SpawnFinish) GameManager.instance.StageClear();
     }
 
-
-    private void SpawnJombie()
+    public void ZombieSpawnStart()
     {
-        GameObject Zom = Instantiate(_jombie, this.transform.position, Quaternion.identity);
-        Zombies.Add(Zom.GetComponent<Jombie>());
-
-        Zom.GetComponent<Jombie>().onDeath += () => Zombies.Remove(Zom.GetComponent<Jombie>());
-        NightStart = true;
+        StartCoroutine("ZombieSpawn");
     }
+
+    IEnumerator ZombieSpawn()
+    {
+        StageNum = GameManager.instance.StageNum();
+        for (int i = 0; i < (StageNum*5); i++)
+        {
+            int ZombieNum = Random.Range(0, StageNum%5);
+
+            Debug.Log("좀비출현!"+i);
+            Debug.Log("stage" + StageNum);
+            int SpawnNum = Random.Range(0, 8);
+            GameObject Zom = Instantiate(ZombieSort[ZombieNum], ZombieSpawnPos[SpawnNum].position, Quaternion.identity);
+            Zombies.Add(Zom.GetComponent<Jombie>());
+            Zom.GetComponent<Jombie>().onDeath += () => Zombies.Remove(Zom.GetComponent<Jombie>());
+            yield return new WaitForSeconds(1.0f);
+        }
+
+        if(StageNum%3==0)
+        {
+            GameObject ZombieBoss = Instantiate(ZombieBossSort[StageNum/3], ZombieSpawnPos[3].position, Quaternion.identity);
+            Zombies.Add(ZombieBoss.GetComponent<Jombie>());
+            ZombieBoss.GetComponent<Jombie>().onDeath += () => Zombies.Remove(ZombieBoss.GetComponent<Jombie>());
+         
+        }
+
+        SpawnFinish = true;
+    }
+
+
 }

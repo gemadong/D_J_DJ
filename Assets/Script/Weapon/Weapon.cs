@@ -19,7 +19,6 @@ public class Weapon : MonoBehaviour
     protected int CanhaveMaxCount = 0;
 
 
-
     virtual public void Attack()
     { }
 
@@ -30,11 +29,6 @@ public class Weapon : MonoBehaviour
             other.GetComponent<Jombie>().Damage(AtkDamage);
             Debug.Log("АјАн!");
         }
-    }
-
-    protected virtual void EnomyAttack()
-    {
-
     }
 
     public void ReLoad()
@@ -52,5 +46,15 @@ public class Weapon : MonoBehaviour
     public void DamageUp(int AtkDamageUp)
     {
         AtkDamage += AtkDamageUp;
+    }
+
+    public void AtkDamageUp(int value)
+    {
+        AtkDamage += value;
+    }
+
+    public void BuyBullet(int value)
+    {
+        HaveBulletInPocket += value;
     }
 }

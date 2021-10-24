@@ -27,9 +27,6 @@ public class Hammer : Weapon
         this.AtkRange.enabled = false;
     }
 
-    protected override void EnomyAttack()
-    {
-        
-    }
+ 
 }
 

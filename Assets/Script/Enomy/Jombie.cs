@@ -15,7 +15,9 @@ public class Jombie : MonoBehaviour
     public float atkRng=2.5f;
     public Animator ZomAni;
     public Rigidbody Rb = null;
+
     public event Action onDeath;
+    //좀비의 사망카운트
 
     private bool isAttack = true;
     public enum JombieState
@@ -154,9 +156,6 @@ public class Jombie : MonoBehaviour
         Debug.Log("공격 받았다!!");
     }
 
-    private void OnDestroy()
-    {
-        GameManager.instance.PlayerKill();
-    }
+
 
 }
