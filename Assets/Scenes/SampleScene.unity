@@ -2413,15 +2413,6 @@ MonoBehaviour:
   players:
   - {fileID: 577518751}
   DayTime: 5
-  isBattle: 1
-  Zrange: 0
-  Xrange: 0
-  CntN: 0
-  CntS: 0
-  CntT: 0
-  CntJ: 0
-  CntM: 0
-  CntBos: 0
   zombies:
   - {fileID: 8196007744681378492, guid: fad3c2d03110c004ca2239f0e0a59150, type: 3}
   - {fileID: 1677135346110025779, guid: f992fa67ef3fcc847b46aca98b87b33e, type: 3}
@@ -6533,7 +6524,7 @@ MonoBehaviour:
   - {fileID: 311659954}
   - {fileID: 1157748996}
   - {fileID: 529048931}
-  player: {fileID: 577518748}
+  Player: {fileID: 577518752}
   SpawnFinish: 0
 --- !u!1001 &1579895192
 PrefabInstance:

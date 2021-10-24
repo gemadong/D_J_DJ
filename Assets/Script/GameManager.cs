@@ -14,15 +14,16 @@ public class GameManager : MonoBehaviour
     public static bool isNight = true;
     public float DayTime = 5f;
     private int stage=0;
-    public bool isBattle;
-    public float Zrange;
-    public float Xrange;
-    public int CntN;
-    public int CntS;
-    public int CntT;
-    public int CntJ;
-    public int CntM;
-    public int CntBos;
+
+    //public bool isBattle;
+    //public float Zrange;
+    //public float Xrange;
+    //public int CntN;
+    //public int CntS;
+    //public int CntT;
+    //public int CntJ;
+    //public int CntM;
+    //public int CntBos;
 
     /// <summary>
     /// //////////////////////////////////////
@@ -194,7 +195,7 @@ public class GameManager : MonoBehaviour
     public void StageClear() 
     {
         DayStart_ = true;
-      Debug.Log("클리어!");
+        Debug.Log("클리어!");
         Debug.Log("하루시작");
     }
 

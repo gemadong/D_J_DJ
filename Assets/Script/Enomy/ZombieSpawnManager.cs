@@ -9,15 +9,10 @@ public class ZombieSpawnManager : MonoBehaviour
     [SerializeField] private GameObject[] ZombieBossSort = null;
     [SerializeField] private Transform[] ZombieSpawnPos = null;
     // [SerializeField] private GameObject Player = null;
-    public GameObject player;
-
+    [SerializeField] private Transform Player = null;
 
     public bool SpawnFinish = false;
-    private int ZombieSortNum = 1;
     private int StageNum = 0;
-
-
-
 
     List<Jombie> Zombies = new List<Jombie>();
 
@@ -47,7 +42,9 @@ public class ZombieSpawnManager : MonoBehaviour
             Debug.Log("좀비출현!"+i);
             Debug.Log("stage" + StageNum);
             int SpawnNum = Random.Range(0, 8);
+
             GameObject Zom = Instantiate(ZombieSort[ZombieNum], ZombieSpawnPos[SpawnNum].position, Quaternion.identity);
+            
             Zombies.Add(Zom.GetComponent<Jombie>());
             Zom.GetComponent<Jombie>().onDeath += () => Zombies.Remove(Zom.GetComponent<Jombie>());
             yield return new WaitForSeconds(1.0f);
@@ -58,7 +55,7 @@ public class ZombieSpawnManager : MonoBehaviour
             GameObject ZombieBoss = Instantiate(ZombieBossSort[StageNum/3], ZombieSpawnPos[3].position, Quaternion.identity);
             Zombies.Add(ZombieBoss.GetComponent<Jombie>());
             ZombieBoss.GetComponent<Jombie>().onDeath += () => Zombies.Remove(ZombieBoss.GetComponent<Jombie>());
-         
+            ZombieBoss.GetComponent<Jombie>().player.transform.position = Player.position;
         }
 
         SpawnFinish = true;
