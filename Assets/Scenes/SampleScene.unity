@@ -283,6 +283,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32459544}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!1 &34292741 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8418123699266358120, guid: c043dc44cebeafa469a031fc2c95bd6c, type: 3}
@@ -305,6 +306,9 @@ Rigidbody:
   m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &67724075
+=======
+--- !u!1 &25669408
+>>>>>>> parent of d25f02d (수정중)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -966,6 +970,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 180312507}
   m_LocalRotation: {x: 0.04058794, y: -0.09614684, z: 0.0040503424, w: 0.9945311}
   m_LocalPosition: {x: 2.6645353e-15, y: 0.3474936, z: -9.769963e-15}
@@ -1046,6 +1051,11 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c043dc44cebeafa469a031fc2c95bd6c, type: 3}
 --- !u!1 &219276597
+=======
+  m_GameObject: {fileID: 72875709}
+  m_CullTransparentMesh: 1
+--- !u!1 &76614061
+>>>>>>> parent of d25f02d (수정중)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2496,6 +2506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aaecf79520a0fe47b83e799fee1d373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   Sun: {fileID: 705507995}
   Cam:
   - {fileID: 1987121494}
@@ -2529,6 +2540,32 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &577518748
 GameObject:
+=======
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uCE90\uB9AD\uD130 \uC5C5\uADF8\uB808\uC774\uB4DC"
+--- !u!222 &219276600
+CanvasRenderer:
+>>>>>>> parent of d25f02d (수정중)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4790,7 +4827,16 @@ Transform:
   m_Father: {fileID: 1572051792}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1091751578
+=======
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &373372147
+>>>>>>> parent of d25f02d (수정중)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4998,6 +5044,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142381252}
   m_Enabled: 1
+<<<<<<< HEAD
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5033,6 +5080,36 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1142381255
 MeshFilter:
+=======
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Button
+--- !u!222 &383462908
+CanvasRenderer:
+>>>>>>> parent of d25f02d (수정중)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6262,6 +6339,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.15000057, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+<<<<<<< HEAD
   - {fileID: 937543418}
   - {fileID: 705060293}
   m_Father: {fileID: 1201140759}
@@ -6324,6 +6402,21 @@ RectTransform:
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1477720727
+=======
+  - {fileID: 136939627}
+  - {fileID: 1292880800}
+  - {fileID: 453641198}
+  - {fileID: 1756566737}
+  m_Father: {fileID: 1725590922}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 190, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &494961230
+>>>>>>> parent of d25f02d (수정중)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6343,6 +6436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
@@ -6358,6 +6452,19 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: Button
 --- !u!222 &1477720728
+=======
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &494961231
+>>>>>>> parent of d25f02d (수정중)
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7969,6 +8076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153e3d0a95513b44d963efde07a47ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   speed: 8
   currentTime: 1
   attackDelay: 1
@@ -7983,6 +8091,32 @@ MonoBehaviour:
   state: 0
 --- !u!65 &1862167302
 BoxCollider:
+=======
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Button
+--- !u!222 &548998723
+CanvasRenderer:
+>>>>>>> parent of d25f02d (수정중)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -14149,7 +14283,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124917761}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!1 &7354703252639602
+=======
+--- !u!1 &2145602150
+>>>>>>> parent of d25f02d (수정중)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14157,28 +14295,60 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 7112324351023348378}
   m_Layer: 0
   m_Name: Leg
+=======
+  - component: {fileID: 2145602151}
+  - component: {fileID: 2145602153}
+  - component: {fileID: 2145602152}
+  m_Layer: 5
+  m_Name: Image
+>>>>>>> parent of d25f02d (수정중)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!33 &62090877096251223
 MeshFilter:
+=======
+--- !u!224 &2145602151
+RectTransform:
+>>>>>>> parent of d25f02d (수정중)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1006240416390804534}
   m_Mesh: {fileID: 1969476169269212006, guid: f3f9d21581a39c1489b81576b95dd0d2, type: 3}
 --- !u!1 &394790966048001451
 GameObject:
+=======
+  m_GameObject: {fileID: 2145602150}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1894537715}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 84.5, y: -12.81}
+  m_SizeDelta: {x: 350, y: 5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2145602152
+MonoBehaviour:
+>>>>>>> parent of d25f02d (수정중)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6186162127304582891}
@@ -14234,10 +14404,39 @@ MeshRenderer:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!23 &845249356614134872
 MeshRenderer:
+=======
+  m_GameObject: {fileID: 2145602150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.3471055, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2145602153
+CanvasRenderer:
+>>>>>>> parent of d25f02d (수정중)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 6552840727623521415}
   m_Enabled: 1
   m_CastShadows: 1
@@ -15398,3 +15597,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3482322388099698685}
   m_Mesh: {fileID: -362046790695249943, guid: f3f9d21581a39c1489b81576b95dd0d2, type: 3}
+=======
+  m_GameObject: {fileID: 2145602150}
+  m_CullTransparentMesh: 1
+>>>>>>> parent of d25f02d (수정중)
