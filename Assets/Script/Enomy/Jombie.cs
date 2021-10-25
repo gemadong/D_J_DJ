@@ -37,6 +37,7 @@ public class Jombie : MonoBehaviour
 
     protected virtual void Update()
     {
+        Debug.Log(state);
         FindClosestPlayer();
         switch (state)
         {
