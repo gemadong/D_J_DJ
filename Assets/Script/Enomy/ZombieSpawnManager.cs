@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ZombieSpawnManager : MonoBehaviour
 {
@@ -11,10 +12,11 @@ public class ZombieSpawnManager : MonoBehaviour
     // [SerializeField] private GameObject Player = null;
     [SerializeField] private Transform Player = null;
 
+
     public bool SpawnFinish = false;
     private int StageNum = 0;
 
-    List<Jombie> Zombies = new List<Jombie>();
+    public List<Jombie> Zombies = new List<Jombie>();
 
     void Start()
     {
