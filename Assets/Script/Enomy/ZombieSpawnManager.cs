@@ -53,14 +53,6 @@ public class ZombieSpawnManager : MonoBehaviour
         if(StageNum%3==0)
         {
             GameObject ZombieBoss = Instantiate(ZombieBossSort[(StageNum/3)-1], ZombieSpawnPos[3].position, Quaternion.identity);
-            if (StageNum == 3)
-            {
-                ZombieBoss.GetComponent<Bos_1>().target = Player;
-            }
-            else if (StageNum == 6)
-            {
-                ZombieBoss.GetComponent<Bos_2>().target = Player;
-            }
             Zombies.Add(ZombieBoss.GetComponent<Jombie>());
             ZombieBoss.GetComponent<Jombie>().onDeath += () => Zombies.Remove(ZombieBoss.GetComponent<Jombie>());
         }
