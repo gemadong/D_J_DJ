@@ -75,7 +75,6 @@ public class Bos_2 : Jombie
                 yield return new WaitForSeconds(A);
                     for (int i = -10; i < 120; i += 3)
                     {
-                        Debug.Log(i);
                         Vector3 roR = new Vector3(0, i, 0);
                         GameObject poison = Instantiate(PoisonPrefab, transform.position, Quaternion.identity);
                         Vector3 dir = transform.forward + roR * Time.deltaTime;

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-
+    [SerializeField] private Slider hpbar;
     private Rigidbody PRb = null;
     private BoxCollider boxCollider = null;
 
@@ -32,7 +33,8 @@ public class Player : MonoBehaviour
     private bool isGround;  //점프가능 확인
     private bool isjump = true;
     private float jumpForce = 7.0f;
-    private float hp = 1000000000f;
+    private float hp = 100f;
+    private float curhp = 100f;
     [SerializeField] float PlayerwalkSpeed = 0f;
     [SerializeField] float PlayerRunSpeed = 0f;
 
@@ -48,12 +50,15 @@ public class Player : MonoBehaviour
         PRb = GetComponent<Rigidbody>();
         PAnima = Leg.GetComponentInChildren<Animator>();
         BodyAnima = Body.GetComponent<Animator>();
+        hpbar.value = curhp / hp;
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(hp);
+        Hpbar();
         if (PlayerKill == ZombieSpawnCount) StageClear();
 
         LookAt();
@@ -269,5 +274,9 @@ public class Player : MonoBehaviour
         PlayerKill = 0;
     }
 
+    private void Hpbar()
+    {
+        hpbar.value = hp/curhp;
+    }
 
 }
