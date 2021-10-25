@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [System.Serializable]
 public class Craft
@@ -17,30 +16,14 @@ public class BuildManager : MonoBehaviour
 
     [SerializeField] private Camera _camera = null;
 
-    [SerializeField] private GameObject BuildSlot = null;
-    [SerializeField] private Text[] ObstacleCount = null;
-
-    [SerializeField] private GameObject Shop=null;
-    [SerializeField] private GameObject[] ShopInUi = null;
-    
-    [SerializeField] private GameObject Player = null;
-    [SerializeField] private GameObject[] Weapon = null;
-
     private GameObject PreviewPrefab = null;    //Craft를 담을 변수와 미리보기에 사용할 변수 선언
     private GameObject InsPrefab = null;
-    private int BuildNum = 0;
     
     private bool isActivatePreview = false;
     Vector3 MousePos;
     //
     private RaycastHit hitinfo;
     Vector3 _location;
-
-    private void Awake()
-    {
-        BuildSlot.active = false;
-        Shop.active = false;
-    }
     private void Update()
     {
         MousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
@@ -67,30 +50,6 @@ public class BuildManager : MonoBehaviour
                 isActivatePreview = false;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape)&&PreviewPrefab != null)
-        {
-            Destroy(PreviewPrefab);
-            isActivatePreview = false;
-            TurretHasCountUp(BuildNum);
-        }
-
-        HaveCount();
-
-    }
-
-    public void HaveCount()
-    {
-
-        for (int i = 0; i < craft.Length; i++)
-        {
-            ObstacleCount[i].text = craft[i].HasTurretCount.ToString("D2") + " 개";
-        }
-    }
-
-    public void TurretHasCountUp(int SlotNumber)
-    {
-        craft[SlotNumber].HasTurretCount++;
     }
 
     public void SlotClick(int _SlotNumber)
@@ -101,55 +60,7 @@ public class BuildManager : MonoBehaviour
         craft[_SlotNumber].HasTurretCount--;
         isActivatePreview = true;
         Debug.Log(isActivatePreview);
-        BuildNum = _SlotNumber;
     }
 
-    public void BuildSlotOpen()
-    {
-        if (BuildSlot.active) BuildSlot.active = false;
-        else if (!BuildSlot.active) BuildSlot.active = true;
-    }
-
-    public void ShopOpen()
-    {
-        Shop.active = true;
-        ShopInUi[0].SetActive(true);
-        ShopInUi[1].SetActive(false);
-        ShopInUi[2].SetActive(false);
-    }
-
-    public void ShopClose()
-    {
-        Shop.active = false;
-    }
-
-    public void WeaponOpen()
-    {
-        ShopInUi[0].SetActive(true);
-        ShopInUi[1].SetActive(false);
-        ShopInUi[2].SetActive(false);
-    }
-    public void CharactorOpen()
-    {
-        ShopInUi[0].SetActive(false);
-        ShopInUi[1].SetActive(true);
-        ShopInUi[2].SetActive(false);
-    }
-    public void BuildItemOpen()
-    {
-        ShopInUi[0].SetActive(false);
-        ShopInUi[1].SetActive(false);
-        ShopInUi[2].SetActive(true);
-    }
-
-public void BuyBullet(int WeaponNum, int BullCount) 
-    {
-        Weapon[WeaponNum].GetComponent<Weapon>().BuyBullet(BullCount);
-    }
-
-public void WeaponDamageUp(int WeaponNum ,int UpDamage) 
-    {
-        Weapon[WeaponNum].GetComponent<Weapon>().AtkDamageUp(UpDamage);
-    }
 
 }

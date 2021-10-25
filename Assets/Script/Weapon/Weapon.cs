@@ -18,9 +18,6 @@ public class Weapon : MonoBehaviour
     public int currentbullet = 0;
     protected int CanhaveMaxCount = 0;
 
-    protected float NuckbackPower = 0;
-    protected float NuckbackUpPower = 0;
-
 
     virtual public void Attack()
     { }
@@ -30,10 +27,7 @@ public class Weapon : MonoBehaviour
         if (other.CompareTag("Zombie"))
         {
             other.GetComponent<Jombie>().Damage(AtkDamage);
-
-            Rigidbody ERb = other.GetComponent<Rigidbody>();
-            Vector3 reacVec = -other.transform.forward*NuckbackPower+other.transform.up*NuckbackUpPower;
-            ERb.AddForce(reacVec.normalized*NuckbackPower, ForceMode.Impulse);
+            Debug.Log("АјАн!");
         }
     }
 
@@ -63,6 +57,4 @@ public class Weapon : MonoBehaviour
     {
         HaveBulletInPocket += value;
     }
-
-
 }
