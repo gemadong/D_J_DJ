@@ -18,6 +18,7 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private Camera _camera = null;
 
     [SerializeField] private GameObject BuildSlot = null;
+    private bool OpenBuildSlot = false;
     [SerializeField] private Text[] ObstacleCount = null;
 
     [SerializeField] private GameObject Shop=null;
@@ -38,8 +39,8 @@ public class BuildManager : MonoBehaviour
 
     private void Awake()
     {
-        BuildSlot.active = false;
-        Shop.active = false;
+        BuildSlot.SetActive(false);
+        Shop.SetActive(false);
     }
     private void Update()
     {
@@ -84,7 +85,7 @@ public class BuildManager : MonoBehaviour
 
         for (int i = 0; i < craft.Length; i++)
         {
-            ObstacleCount[i].text = craft[i].HasTurretCount.ToString("D2") + " °³";
+            ObstacleCount[i].text = craft[i].HasTurretCount.ToString("D2") + "°³";
         }
     }
 
@@ -106,13 +107,21 @@ public class BuildManager : MonoBehaviour
 
     public void BuildSlotOpen()
     {
-        if (BuildSlot.active) BuildSlot.active = false;
-        else if (!BuildSlot.active) BuildSlot.active = true;
-    }
+        if (OpenBuildSlot)
+        {
+            BuildSlot.SetActive(false);
+            OpenBuildSlot = false;
+        }
+        else if (!OpenBuildSlot)
+        {
+            BuildSlot.SetActive(true);
+            OpenBuildSlot = true;
+        }
+        }
 
     public void ShopOpen()
     {
-        Shop.active = true;
+        Shop.SetActive(true);
         ShopInUi[0].SetActive(true);
         ShopInUi[1].SetActive(false);
         ShopInUi[2].SetActive(false);

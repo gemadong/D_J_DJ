@@ -32,11 +32,11 @@ public class Player : MonoBehaviour
     private bool isRun = false;
     private bool isGround;  //점프가능 확인
     private bool isjump = true;
-    private float jumpForce = 7.0f;
+    private float jumpForce = 3.0f;
     private float hp = 100f;
     private float curhp = 100f;
-    [SerializeField] float PlayerwalkSpeed = 0f;
-    [SerializeField] float PlayerRunSpeed = 0f;
+    private float PlayerwalkSpeed = 6f;
+    private float PlayerRunSpeed = 12f;
 
     private int ZombieSpawnCount = 20;
     private int PlayerKill = 0;
@@ -277,6 +277,22 @@ public class Player : MonoBehaviour
     private void Hpbar()
     {
         hpbar.value = hp / curhp;
+    }
+
+    public void HpUp()
+    {
+        hp += 10;
+    }
+
+    public void SpeedUp()
+    {
+        PlayerwalkSpeed+=0.6f;
+        PlayerRunSpeed+=1.2f;
+    }
+
+    public void JumpForceUp()
+    {
+        jumpForce += 0.3f;
     }
 
 }
