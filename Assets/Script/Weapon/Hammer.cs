@@ -12,6 +12,8 @@ public class Hammer : Weapon
         AtkDelay = 1.3f;
         AtkRange = GetComponent<BoxCollider>();
         AtkRange.enabled = false;
+        NuckbackPower = 250.0f;
+        NuckbackUpPower = 3.0f;
     }
 
       override public void Attack()
@@ -21,7 +23,7 @@ public class Hammer : Weapon
     IEnumerator SwingAttack()
     {
         this.AtkRange.enabled = false;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.4f);
         this.AtkRange.enabled = true;
         yield return new WaitForSeconds(0.5f);
         this.AtkRange.enabled = false;
