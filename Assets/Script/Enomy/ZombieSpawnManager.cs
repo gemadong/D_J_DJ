@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ZombieSpawnManager : MonoBehaviour
 {
-  
+
     [SerializeField] private GameObject[] ZombieSort = null;
     [SerializeField] private GameObject[] ZombieBossSort = null;
     [SerializeField] private Transform[] ZombieSpawnPos = null;
@@ -35,32 +35,24 @@ public class ZombieSpawnManager : MonoBehaviour
     IEnumerator ZombieSpawn()
     {
         StageNum = GameManager.instance.StageNum();
-        for (int i = 0; i < (StageNum*5); i++)
+        for (int i = 0; i < (StageNum * 5); i++)
         {
-            int ZombieNum = Random.Range(0, StageNum%5);
+            int ZombieNum = Random.Range(0, StageNum % 5);
 
-            Debug.Log("좀비출현!"+i);
+            Debug.Log("좀비출현!" + i);
             Debug.Log("stage" + StageNum);
             int SpawnNum = Random.Range(0, 8);
 
             GameObject Zom = Instantiate(ZombieSort[ZombieNum], ZombieSpawnPos[SpawnNum].position, Quaternion.identity);
-            
+
             Zombies.Add(Zom.GetComponent<Jombie>());
             Zom.GetComponent<Jombie>().onDeath += () => Zombies.Remove(Zom.GetComponent<Jombie>());
             yield return new WaitForSeconds(1.0f);
         }
 
-        if(StageNum%3==0)
+        if (StageNum % 3 == 0)
         {
-            GameObject ZombieBoss = Instantiate(ZombieBossSort[(StageNum/3)-1], ZombieSpawnPos[3].position, Quaternion.identity);
-            if (StageNum == 3)
-            {
-                ZombieBoss.GetComponent<Bos_1>().target = Player;
-            }
-            else if (StageNum == 6)
-            {
-                ZombieBoss.GetComponent<Bos_2>().target = Player;
-            }
+            GameObject ZombieBoss = Instantiate(ZombieBossSort[(StageNum / 3) - 1], ZombieSpawnPos[3].position, Quaternion.identity);
             Zombies.Add(ZombieBoss.GetComponent<Jombie>());
             ZombieBoss.GetComponent<Jombie>().onDeath += () => Zombies.Remove(ZombieBoss.GetComponent<Jombie>());
         }

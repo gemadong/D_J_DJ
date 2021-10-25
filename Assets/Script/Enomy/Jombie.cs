@@ -11,15 +11,17 @@ public class Jombie : MonoBehaviour
     public int attackPower = 5; //°ø°Ý·Â
     public float hp = 15; //Á»ºñ Ã¼·Â
     public Player player;
-    public float sight=2.5f;
-    public float atkRng=2.5f;
+    public float sight = 2.6f;
+    public float atkRng = 2.5f;
     public Animator ZomAni;
     public Rigidbody Rb = null;
+    private BoxCollider BC = null;
+
 
     public event Action onDeath;
     //Á»ºñÀÇ »ç¸ÁÄ«¿îÆ®
 
-    private bool isAttack = true;
+    public bool isAttack = true;
     public enum JombieState
     {
         Follow, Attack, Die, Jump
@@ -30,10 +32,12 @@ public class Jombie : MonoBehaviour
     {
         ZomAni = GetComponent<Animator>();
         Rb = GetComponent<Rigidbody>();
+        BC = GetComponent<BoxCollider>();
     }
 
     protected virtual void Update()
     {
+        Debug.Log(state);
         FindClosestPlayer();
         switch (state)
         {
@@ -44,9 +48,9 @@ public class Jombie : MonoBehaviour
                 Attack();
                 break;
             case JombieState.Die:
-                Die();
+                StartCoroutine("Die");
                 break;
-            
+
         }
     }
     //¸ÖÆ¼Áß °¡Àå °¡±îÀÌ ÀÖ´Â ÇÃ·¹ÀÌ¾î Ã£´Â ÇÔ¼ö
@@ -68,28 +72,30 @@ public class Jombie : MonoBehaviour
         if (tempPlayer != null)
             player = tempPlayer;
     }
-    
+
     protected virtual void Follow()
     {
         Vector3 moveVector = player.transform.position - transform.position;
         moveVector.y = 0;
         if (moveVector.magnitude > atkRng)
         {
+            state = JombieState.Follow;
             ZomAni.SetBool("isWalk", true);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.LookRotation(moveVector), 5 * Time.deltaTime);
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
-            
+
         }
         else
         {
             ZomAni.SetBool("isWalk", false);
-            state = JombieState.Attack; 
+            state = JombieState.Attack;
+            isAttack = true;
         }
     }
     protected virtual void Attack()
     {
         //ÇÃ·¹ÀÌ¾î°¡ °ø°Ý ¹üÀ§¶ó¸é °ø°Ý
-        
+
         if (Vector3.Distance(transform.position, player.transform.position) < sight)
         {
             if (isAttack) currentTime = 1.0f;
@@ -98,7 +104,6 @@ public class Jombie : MonoBehaviour
             if (currentTime > attackDelay)
             {
                 ZomAni.SetBool("isAtt", true);
-                // ÇÃ·¹ÀÌ¾î¿¡ ¸Â°Ô ¼öÁ¤ 
                 player.Damage(attackPower);
                 currentTime = 0;
                 isAttack = false;
@@ -113,22 +118,18 @@ public class Jombie : MonoBehaviour
             isAttack = true;
         }
     }
-    
+
     public void Damage(int _dmg)
     {
         hp -= _dmg;
-<<<<<<< HEAD
         Debug.Log(hp);
-=======
-     
->>>>>>> parent of d25f02d (ìˆ˜ì •ì¤‘)
         if (hp <= 0)
         {
             state = JombieState.Die;
-            Destroy(gameObject);
+
             if (onDeath != null) onDeath();
         }
-     }
+    }
 
     //ÇÃ·¹ÀÌ¾î¿¡°Ô µ¥¹ÌÁö ¹Þ´Â ÇÔ¼ö
     public void HitJombie(int hitPower)
@@ -143,23 +144,24 @@ public class Jombie : MonoBehaviour
         else
         {
             state = JombieState.Die;
-         
+
         }
     }
     protected virtual IEnumerator Die()
     {
+        BC.enabled = false;
         ZomAni.SetTrigger("Die");
+        Debug.Log("Á»ºñ Die");
         //2ÃÊ°¡ Áö³­ ÈÄ »ç¶óÁü.  
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.0f);
         Destroy(gameObject);
-
     }
-    
+
     public void Attacked()
     {
         Vector3 Back = -Vector3.forward;
-        Vector3 Pos = (Vector3.up/2 + Back).normalized;
-        Rb.AddForce(Pos*10.0f, ForceMode.Impulse);
+        Vector3 Pos = (Vector3.up / 2 + Back).normalized;
+        Rb.AddForce(Pos * 10.0f, ForceMode.Impulse);
         Debug.Log("°ø°Ý ¹Þ¾Ò´Ù!!");
     }
 

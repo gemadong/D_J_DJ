@@ -993,7 +993,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 606517580}
   m_Direction: 2
   m_Value: 1.0000002
-  m_Size: 0.7468977
+  m_Size: 0.7422149
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6631,7 +6631,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1789690189}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.45798382
+  m_Size: 0.456161
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8056,18 +8056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153e3d0a95513b44d963efde07a47ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  currentTime: 1
-  attackDelay: 1
-  attackPower: 5
-  hp: 100
-  player: {fileID: 0}
-  sight: 2.6
-  atkRng: 2.5
-  ZomAni: {fileID: 0}
-  Rb: {fileID: 0}
-  isAttack: 1
-  state: 0
+  target: {fileID: 0}
 --- !u!65 &577833008
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15370,18 +15359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153e3d0a95513b44d963efde07a47ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  currentTime: 1
-  attackDelay: 1
-  attackPower: 5
-  hp: 100
-  player: {fileID: 0}
-  sight: 2.6
-  atkRng: 2.5
-  ZomAni: {fileID: 0}
-  Rb: {fileID: 0}
-  isAttack: 1
-  state: 0
+  target: {fileID: 0}
 --- !u!65 &1153678022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19632,7 +19610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1572051792
 Transform:
   m_ObjectHideFlags: 0
@@ -23876,18 +23854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153e3d0a95513b44d963efde07a47ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  currentTime: 1
-  attackDelay: 1
-  attackPower: 5
-  hp: 100
-  player: {fileID: 0}
-  sight: 2.6
-  atkRng: 2.5
-  ZomAni: {fileID: 0}
-  Rb: {fileID: 0}
-  isAttack: 1
-  state: 0
+  target: {fileID: 0}
 --- !u!65 &1862167302
 BoxCollider:
   m_ObjectHideFlags: 0

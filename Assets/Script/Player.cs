@@ -205,7 +205,7 @@ public class Player : MonoBehaviour
 
         if (equipWeapon.type == global::Weapon.Type.Hand && !isAttack) { }
 
-        else if (equipWeapon.type == global::Weapon.Type.SwingWeapon && !isAttack&&!isReLoding)
+        else if (equipWeapon.type == global::Weapon.Type.SwingWeapon && !isAttack && !isReLoding)
         {
             isAttack = true;
             BodyAnima.SetTrigger("DoSwing");
@@ -276,7 +276,7 @@ public class Player : MonoBehaviour
 
     private void Hpbar()
     {
-        hpbar.value = hp/curhp;
+        hpbar.value = hp / curhp;
     }
 
 }
