@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Slider hpbar;
+    [SerializeField] private Text hptext;
     private Rigidbody PRb = null;
     private BoxCollider boxCollider = null;
 
@@ -58,12 +59,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(hp);
+        
         Hpbar();
 
 
         LookAt();
         CharactorMotion();
+        hptext.text = hp.ToString();
     }
     private void LookAt()
     {
