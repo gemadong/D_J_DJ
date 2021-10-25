@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     public static bool isNight = true;
     public float DayTime = 5f;
     public int stage=0;
+    [SerializeField] private Text zombiecount;
 
     /// <summary>
     /// //////////////////////////////////////
@@ -47,6 +49,9 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if(DayStart_)DayStart();
+
+        zombiecount.text = ZombieSpawnManager.GetComponent<ZombieSpawnManager>().Zombies.Count.ToString();
+
     }
 
     
@@ -104,5 +109,6 @@ public class GameManager : MonoBehaviour
     {
         return stage;
     }
+    
   
 }
