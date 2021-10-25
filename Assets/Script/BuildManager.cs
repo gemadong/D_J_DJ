@@ -24,8 +24,7 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private GameObject Shop=null;
     [SerializeField] private GameObject[] ShopInUi = null;
     
-    [SerializeField] private GameObject Player = null;
-    [SerializeField] private GameObject[] Weapon = null;
+
 
     private GameObject PreviewPrefab = null;    //Craft를 담을 변수와 미리보기에 사용할 변수 선언
     private GameObject InsPrefab = null;
@@ -37,6 +36,10 @@ public class BuildManager : MonoBehaviour
     private RaycastHit hitinfo;
     Vector3 _location;
 
+
+
+
+
     private void Awake()
     {
         BuildSlot.SetActive(false);
@@ -44,6 +47,8 @@ public class BuildManager : MonoBehaviour
     }
     private void Update()
     {
+
+
         MousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
         
         if (isActivatePreview)
@@ -129,7 +134,7 @@ public class BuildManager : MonoBehaviour
 
     public void ShopClose()
     {
-        Shop.active = false;
+        Shop.SetActive(false);
     }
 
     public void WeaponOpen()
@@ -151,14 +156,9 @@ public class BuildManager : MonoBehaviour
         ShopInUi[2].SetActive(true);
     }
 
-public void BuyBullet(int WeaponNum, int BullCount) 
-    {
-        Weapon[WeaponNum].GetComponent<Weapon>().BuyBullet(BullCount);
-    }
 
-public void WeaponDamageUp(int WeaponNum ,int UpDamage) 
-    {
-        Weapon[WeaponNum].GetComponent<Weapon>().AtkDamageUp(UpDamage);
-    }
+
+    
+
 
 }

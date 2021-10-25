@@ -38,8 +38,9 @@ public class Player : MonoBehaviour
     private float PlayerwalkSpeed = 6f;
     private float PlayerRunSpeed = 12f;
 
-    private int ZombieSpawnCount = 20;
-    private int PlayerKill = 0;
+    private int PlayerCoin = 3000;
+
+
     private int Stage = 0;
 
     void Awake()
@@ -59,7 +60,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log(hp);
         Hpbar();
-        if (PlayerKill == ZombieSpawnCount) StageClear();
+
 
         LookAt();
         CharactorMotion();
@@ -267,12 +268,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void StageClear()
-    {
-        ZombieSpawnCount += 5;
-        Stage++;
-        PlayerKill = 0;
-    }
 
     private void Hpbar()
     {
@@ -293,6 +288,19 @@ public class Player : MonoBehaviour
     public void JumpForceUp()
     {
         jumpForce += 0.3f;
+    }
+
+    public int SetCoin()
+    {
+        return PlayerCoin;
+    }
+    public void CoinGet(int value)
+    {
+        PlayerCoin += value;
+    }
+    public void UseCoin(int value)
+    {
+        PlayerCoin -= value;
     }
 
 }
