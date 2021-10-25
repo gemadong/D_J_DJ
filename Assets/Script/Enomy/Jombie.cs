@@ -117,6 +117,7 @@ public class Jombie : MonoBehaviour
     public void Damage(int _dmg)
     {
         hp -= _dmg;
+     
         if (hp <= 0)
         {
             state = JombieState.Die;

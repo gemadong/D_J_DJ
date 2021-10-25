@@ -43,7 +43,10 @@ public class ZombieSpawnManager : MonoBehaviour
             Debug.Log("stage" + StageNum);
             int SpawnNum = Random.Range(0, 8);
 
-            GameObject Zom = Instantiate(ZombieSort[ZombieNum], ZombieSpawnPos[SpawnNum].position, Quaternion.identity);
+            Vector3 SpawnPos = ZombieSpawnPos[SpawnNum].position;
+            SpawnPos.y = 0;
+
+            GameObject Zom = Instantiate(ZombieSort[ZombieNum], SpawnPos, Quaternion.identity);
             
             Zombies.Add(Zom.GetComponent<Jombie>());
             Zom.GetComponent<Jombie>().onDeath += () => Zombies.Remove(Zom.GetComponent<Jombie>());
