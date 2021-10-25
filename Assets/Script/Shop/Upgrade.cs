@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Upgrade : MonoBehaviour
 {
     [SerializeField] private GameObject Player = null;
     [SerializeField] private GameObject[] Weapon = null;
+    [SerializeField] private Text[] PlayerUpgradeState = null;
 
     /// ////////////////////////////
     private int PlayerCoin = 0;
@@ -14,6 +16,9 @@ public class Upgrade : MonoBehaviour
     private int UpgradePrice_Cha_Speed = 100;
     private int UpgradePrice_Cha_Hp = 100;
     private int UpgradePrice_Cha_Jump = 100;
+
+
+
     void Start()
     {
         
@@ -23,6 +28,14 @@ public class Upgrade : MonoBehaviour
     void Update()
     {
         PlayerCoin = Player.GetComponent<Player>().SetCoin();
+        CurrentChaUpgrade();
+    }
+
+    private void CurrentChaUpgrade()
+    {
+        PlayerUpgradeState[0].text = UpgradePrice_Cha_Hp + "¿ø";
+        PlayerUpgradeState[1].text = UpgradePrice_Cha_Jump + "¿ø";
+        PlayerUpgradeState[2].text = UpgradePrice_Cha_Speed + "¿ø";
     }
 
     public void PlayerSpeedUp()
