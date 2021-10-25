@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Slider hpbar;
     [SerializeField] private Text hptext;
+    [SerializeField] private Text Cointext;
     private Rigidbody PRb = null;
     private BoxCollider boxCollider = null;
 
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
     private int ZombieSpawnCount = 20;
     private int PlayerKill = 0;
     private int Stage = 0;
+    public int Coin = 0;
 
     void Awake()
     {
@@ -65,6 +67,7 @@ public class Player : MonoBehaviour
         LookAt();
         CharactorMotion();
         hptext.text = hp.ToString();
+        Cointext.text = Coin.ToString();
     }
     private void LookAt()
     {
@@ -297,4 +300,5 @@ public class Player : MonoBehaviour
         jumpForce += 0.3f;
     }
 
+    
 }

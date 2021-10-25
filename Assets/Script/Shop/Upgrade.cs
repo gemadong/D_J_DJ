@@ -27,7 +27,7 @@ public class Upgrade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerCoin = Player.GetComponent<Player>().SetCoin();
+        PlayerCoin = Player.GetComponent<Player>().Coin;
         CurrentChaUpgrade();
     }
 

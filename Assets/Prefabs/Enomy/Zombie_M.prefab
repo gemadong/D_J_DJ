@@ -296,10 +296,11 @@ MonoBehaviour:
   attackPower: 5
   hp: 15
   player: {fileID: 0}
-  sight: 2.6
+  sight: 2.5
   atkRng: 2.5
   ZomAni: {fileID: 0}
   Rb: {fileID: 0}
+  isAttack: 1
   state: 0
   jombie_N: {fileID: 7064745828405938595, guid: 61760e32164468d4cb471350a65bfdd9, type: 3}
 --- !u!65 &1677135346110025778

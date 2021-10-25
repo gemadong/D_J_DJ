@@ -671,10 +671,11 @@ MonoBehaviour:
   attackPower: 5
   hp: 15
   player: {fileID: 0}
-  sight: 2.6
+  sight: 2.5
   atkRng: 2.5
   ZomAni: {fileID: 0}
   Rb: {fileID: 0}
+  isAttack: 1
   state: 0
 --- !u!54 &7064745828405938601
 Rigidbody:

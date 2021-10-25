@@ -570,8 +570,8 @@ MonoBehaviour:
   attackPower: 5
   hp: 15
   player: {fileID: 0}
-  sight: 2.6
-  atkRng: 2.5
+  sight: 6
+  atkRng: 6
   ZomAni: {fileID: 0}
   Rb: {fileID: 0}
   isAttack: 1

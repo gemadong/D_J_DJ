@@ -11,10 +11,14 @@ public class ZombieSpawnManager : MonoBehaviour
     [SerializeField] private Transform[] ZombieSpawnPos = null;
     // [SerializeField] private GameObject Player = null;
     [SerializeField] private Transform Player = null;
+    [SerializeField] private Slider hpbar_boss;
+    [SerializeField] private Text hptext_boss;
+
 
 
     public bool SpawnFinish = false;
     private int StageNum = 0;
+    private float curhp = 100f;
 
     public List<Jombie> Zombies = new List<Jombie>();
 
@@ -26,7 +30,14 @@ public class ZombieSpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Zombies.Count == 0 && SpawnFinish) GameManager.instance.StageClear();
+        if (Zombies.Count == 0 && SpawnFinish)
+        {
+            GameManager.instance.StageClear();
+            if(StageNum %3 == 0)
+            {
+                hpbar_boss.gameObject.SetActive(false);
+            }
+        }
     }
 
     public void ZombieSpawnStart()
@@ -54,8 +65,11 @@ public class ZombieSpawnManager : MonoBehaviour
 
         if (StageNum % 3 == 0)
         {
+            hpbar_boss.gameObject.SetActive(true);
             GameObject ZombieBoss = Instantiate(ZombieBossSort[(StageNum / 3) - 1], ZombieSpawnPos[3].position, Quaternion.identity);
             Zombies.Add(ZombieBoss.GetComponent<Jombie>());
+            hpbar_boss.value = ZombieBoss.GetComponent<Bos_2>().hp / curhp;
+            hptext_boss.text = "º¸½ºHp : " + ZombieBoss.GetComponent<Bos_2>().hp;
             ZombieBoss.GetComponent<Jombie>().onDeath += () => Zombies.Remove(ZombieBoss.GetComponent<Jombie>());
         }
 

@@ -97,7 +97,7 @@ public class Jombie : MonoBehaviour
 
         if (Vector3.Distance(transform.position, player.transform.position) < sight)
         {
-            if (isAttack) currentTime = 1.0f;
+            if (isAttack) currentTime = 2.0f;
             //1초 마다 플레이어 공격
             currentTime += Time.deltaTime;
             if (currentTime > attackDelay)

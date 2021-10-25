@@ -8,10 +8,11 @@ public class Bos_2 : Jombie
     float delayTime = 0;
     private bool isAttack_1 = true;
     public float A = 1.0f;
+    public float curhp = 100f;
     protected override void Awake()
     {
         base.Awake();
-        hp = 60;
+        hp = 100;
         attackDelay = 4f;
         attackPower = 20;
         sight = 5.6f;
