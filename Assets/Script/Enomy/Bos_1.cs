@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class Bos_1 : Jombie
 {
-    [SerializeField] private Slider hpbar_boss;
-    [SerializeField] private Text hptext_boss;
-
-    private float curhp = 50f;
     protected override void Awake()
     {
         base.Awake();
@@ -21,8 +17,6 @@ public class Bos_1 : Jombie
     protected override void Update()
     {
         FindClosestPlayer();
-        hpbar_boss.value = hp / curhp;
-        hptext_boss.text = "º¸½ºHP : " + hp;
         switch (state)
         {
             case JombieState.Follow:
