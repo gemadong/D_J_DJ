@@ -21,6 +21,8 @@ public class LazerGun : Weapon
         CanhaveMaxCount = 30;
         HaveBulletInPocket = 90;
         LazerBullet.SetActive(false);
+        AtkDamage = 3;
+        AtkDamage = 2;
     }
 
     // Update is called once per frame

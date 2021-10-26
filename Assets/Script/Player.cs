@@ -296,7 +296,7 @@ public class Player : MonoBehaviour
         return PlayerCoin;
     }
 
-    public void GetCoin(int value)
+    public void PlayerCoinMinus(int value)
     {
         PlayerCoin -= value;
     }

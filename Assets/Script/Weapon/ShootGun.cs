@@ -12,6 +12,9 @@ public class ShootGun : Weapon
         currentbullet = 2;
         CanhaveMaxCount = 2;
         HaveBulletInPocket = 10;
+        UpgradeDamage = 1;
+        AtkDamage = 1;
+         
     }
 
     private void Update()

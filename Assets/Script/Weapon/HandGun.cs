@@ -13,6 +13,7 @@ public class HandGun : Weapon
         currentbullet = 10;
         CanhaveMaxCount = 10;
         HaveBulletInPocket = 0;
+        UpgradeDamage = 1;
     }
 
     // Update is called once per frame
