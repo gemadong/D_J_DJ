@@ -31,6 +31,7 @@ public class HandGun : Weapon
     IEnumerator Shoot()
     {
         yield return new WaitForSeconds(0.1f);
+        Pr.Play();
         GameObject bullet = Instantiate(Bullet, BulletPos.position, BulletPos.rotation);
         bullet.GetComponent<Bullet>().Damage = AtkDamage;
     }

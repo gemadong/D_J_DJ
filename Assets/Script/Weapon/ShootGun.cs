@@ -30,6 +30,7 @@ public class ShootGun : Weapon
     IEnumerator ShootGun_()
     {
         yield return new WaitForSeconds(0.1f);
+        Pr.Play();
         for (int i = -1; i < 2; i++)
         {
             for (int j = -1; j < 2; j++)

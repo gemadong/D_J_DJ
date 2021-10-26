@@ -25,6 +25,7 @@ public class Bazukar : Weapon
     IEnumerator bazukarshoot()
     {
         yield return new WaitForSeconds(0.1f);
+        Pr.Play();
         GameObject bullet = Instantiate(Bullet, BulletPos.position, BulletPos.rotation);
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 20f;
     }

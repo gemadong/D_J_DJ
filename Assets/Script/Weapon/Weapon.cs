@@ -21,6 +21,7 @@ public class Weapon : MonoBehaviour
     protected float NuckbackPower = 0;
     protected float NuckbackUpPower = 0;
 
+    public ParticleSystem Pr = null;
 
     virtual public void Attack()
     { }
