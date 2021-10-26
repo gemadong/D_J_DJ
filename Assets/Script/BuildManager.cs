@@ -151,14 +151,6 @@ public class BuildManager : MonoBehaviour
         ShopInUi[2].SetActive(true);
     }
 
-public void BuyBullet(int WeaponNum, int BullCount) 
-    {
-        Weapon[WeaponNum].GetComponent<Weapon>().BuyBullet(BullCount);
-    }
 
-public void WeaponDamageUp(int WeaponNum ,int UpDamage) 
-    {
-        Weapon[WeaponNum].GetComponent<Weapon>().AtkDamageUp(UpDamage);
-    }
 
 }

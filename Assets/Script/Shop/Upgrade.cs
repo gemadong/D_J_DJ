@@ -27,7 +27,7 @@ public class Upgrade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerCoin = Player.GetComponent<Player>().Coin;
+        PlayerCoin = Player.GetComponent<Player>().SetCoin();
         CurrentChaUpgrade();
     }
 
@@ -70,9 +70,5 @@ public class Upgrade : MonoBehaviour
         Weapon[WeaponNum].GetComponent<Weapon>().BuyBullet(BullCount);
     }
 
-    public void WeaponDamageUp(int WeaponNum, int UpDamage)
-    {
-        Weapon[WeaponNum].GetComponent<Weapon>().AtkDamageUp(UpDamage);
-    }
 
 }

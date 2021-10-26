@@ -50,12 +50,9 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void DamageUp(int AtkDamageUp)
-    {
-        AtkDamage += AtkDamageUp;
-    }
 
-    public void AtkDamageUp(int value)
+
+    public void DamageUp(int value)
     {
         AtkDamage += value;
     }
