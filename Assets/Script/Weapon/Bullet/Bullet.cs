@@ -11,19 +11,23 @@ private Rigidbody Brb = null;
     private void Awake()
     {
         Brb = this.GetComponent<Rigidbody>();
-        //Destroy(this, 3.0f);
-        StartCoroutine("Destroybull");
     }
     void Update()
     {
         Shoot();
     }
 
+    private void OnEnable()
+    {
+        StartCoroutine("Destroybull");
+    }
+
     IEnumerator Destroybull()
     {
+        
         yield return new WaitForSeconds(1.0f);
         BulletPool.Returnbullet(this.gameObject);
-        Debug.Log("Return");
+        
     }
 
     protected virtual void Shoot()

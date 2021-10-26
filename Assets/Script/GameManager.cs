@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager Instance = null;
+    //private static GameManager Instance = null;
     //���� �������� ������ ���� �̱���
 
     public Transform Sun = null;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         Invoke("Day_", 3.0f);
         Day();
 
-        if (null == Instance) instance = this;
+        if (null == instance) instance = this;
         else instance = this;
 
         zombieList = new List<int>();
