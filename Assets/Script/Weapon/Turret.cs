@@ -16,8 +16,15 @@ public class Turret : MonoBehaviour
     //포탑이 탐색할 적
     [SerializeField] LayerMask tLayerMask = 0;
 
+    [SerializeField] private Transform BulletPos1 = null;
+    [SerializeField] private Transform BulletPos2 = null;
+
     //공격할 대상의 위치
     private Transform FinalTarget = null;
+
+    private bool isShoot = true;
+
+    [SerializeField] private int bulletNum = 0;
 
     //터렛이 목표물을 향해 회전할 스피드
     [SerializeField]private float SpinSpeed = 0;
@@ -49,14 +56,13 @@ public class Turret : MonoBehaviour
             if (XRot > 180f) XRot = Mathf.Clamp(XRot, 310f, 361f);
             else XRot = Mathf.Clamp(XRot, -1, 60);
 
-
-
-
             //터렛의 X축 회전에 제한을 두어서 360도로 돌아가는 것을 막았다.
 
             TurretBody.rotation = Quaternion.Euler(0, t_euler.y, 0);
            TurretHead.rotation =Quaternion.Euler(XRot, t_euler.y,0);
-           // Debug.Log("y축" + TurretHead.rotation.y);
+            // Debug.Log("y축" + TurretHead.rotation.y);
+
+            if (isShoot) TurretShoot();
         }
 
     }
@@ -90,6 +96,41 @@ public class Turret : MonoBehaviour
         }
         FinalTarget = ShortestTarget;
         //반복문을 다 돌리고 나서 가장 거리가 짧은 대상을 최종 타겟으로 설정한다.
+    }
+
+    public void TurretShoot()
+    {
+        Debug.Log("탕");
+        isShoot = false;
+        if (bulletNum == 1)
+        {
+            var bullet = BulletPool.Turret1Ins();
+            bullet.transform.position = BulletPos1.position;
+            bullet.transform.forward = BulletPos1.forward;
+            StartCoroutine("ShootDelay");
+        }
+        else
+        {
+            var bullet = BulletPool.Turret2Ins();
+            bullet.transform.position = BulletPos1.position;
+            bullet.transform.forward = BulletPos1.forward;
+
+            var bullet2 = BulletPool.Turret2Ins();
+            bullet2.transform.position = BulletPos2.position;
+            bullet2.transform.forward = BulletPos2.forward;
+        StartCoroutine("ShootDelay2");
+        }
+    }
+
+    IEnumerator ShootDelay()
+    {
+        yield return new WaitForSeconds(0.8f);
+        isShoot = true;
+    }
+    IEnumerator ShootDelay2()
+    {
+        yield return new WaitForSeconds(0.35f);
+        isShoot = true;
     }
 
 

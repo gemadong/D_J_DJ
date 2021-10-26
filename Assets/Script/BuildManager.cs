@@ -101,7 +101,6 @@ public class BuildManager : MonoBehaviour
         InsPrefab = craft[_SlotNumber].BuildCraft;
         craft[_SlotNumber].HasTurretCount--;
         isActivatePreview = true;
-        Debug.Log(isActivatePreview);
         BuildNum = _SlotNumber;
     }
 

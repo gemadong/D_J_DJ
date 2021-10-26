@@ -30,7 +30,7 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(AtkDamage);
+        Debug.Log("µ¥¹ÌÁö"+AtkDamage);
     }
     private void OnTriggerEnter(Collider other)
     {
