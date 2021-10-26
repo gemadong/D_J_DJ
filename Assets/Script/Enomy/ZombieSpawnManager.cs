@@ -68,8 +68,16 @@ public class ZombieSpawnManager : MonoBehaviour
             hpbar_boss.gameObject.SetActive(true);
             GameObject ZombieBoss = Instantiate(ZombieBossSort[(StageNum / 3) - 1], ZombieSpawnPos[3].position, Quaternion.identity);
             Zombies.Add(ZombieBoss.GetComponent<Jombie>());
-            hpbar_boss.value = ZombieBoss.GetComponent<Bos_2>().hp / curhp;
-            hptext_boss.text = "보스Hp : " + ZombieBoss.GetComponent<Bos_2>().hp;
+            if (StageNum == 3)
+            {
+                hpbar_boss.value = ZombieBoss.GetComponent<Bos_1>().hp / curhp;
+                hptext_boss.text = "보스Hp : " + ZombieBoss.GetComponent<Bos_1>().hp;
+            }
+            else if (StageNum == 6)
+            {
+                hpbar_boss.value = ZombieBoss.GetComponent<Bos_2>().hp / curhp;
+                hptext_boss.text = "보스Hp : " + ZombieBoss.GetComponent<Bos_2>().hp;
+            }
             ZombieBoss.GetComponent<Jombie>().onDeath += () => Zombies.Remove(ZombieBoss.GetComponent<Jombie>());
         }
 
