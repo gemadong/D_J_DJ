@@ -70,11 +70,13 @@ public class ZombieSpawnManager : MonoBehaviour
             Zombies.Add(ZombieBoss.GetComponent<Jombie>());
             if (StageNum == 3)
             {
+                curhp = 50f;
                 hpbar_boss.value = ZombieBoss.GetComponent<Bos_1>().hp / curhp;
                 hptext_boss.text = "보스Hp : " + ZombieBoss.GetComponent<Bos_1>().hp;
             }
             else if (StageNum == 6)
             {
+                curhp = 60f;
                 hpbar_boss.value = ZombieBoss.GetComponent<Bos_2>().hp / curhp;
                 hptext_boss.text = "보스Hp : " + ZombieBoss.GetComponent<Bos_2>().hp;
             }
