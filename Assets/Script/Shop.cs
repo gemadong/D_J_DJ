@@ -13,7 +13,7 @@ public class Shop : MonoBehaviour
 
     [SerializeField] private int[] BuyPrice; //무기 구매 가격
 
-        private int[] UpgradePrice; //무기 공격력 업그레이드 비용
+    private int UpgradePrice = 100; //무기 공격력 업그레이드 비용
     [SerializeField] private int[] BuyBulletPrice = null; //무기별 총알 구매 가격
 
     [SerializeField] private GameObject[] BuyWeaponButtom = null;
@@ -41,12 +41,6 @@ public class Shop : MonoBehaviour
         }
     }
 
-    private void CurrentChaUpgrade()
-    {
-        PlayerUpgradeState[0].text = UpgradePrice_Cha_Hp + "원";
-        PlayerUpgradeState[1].text = UpgradePrice_Cha_Jump + "원";
-        PlayerUpgradeState[2].text = UpgradePrice_Cha_Speed + "원";
-    }
 
 
     /// ///////////////////////////////////
@@ -68,12 +62,12 @@ public class Shop : MonoBehaviour
 
     public void OnClickWeaponDamageUp(int index)
     {
-        if (PlayerCoin >= UpgradePrice[index])
+        if (PlayerCoin >= UpgradePrice)
         {
             Weapon[index].GetComponent<Weapon>().DamageUp();
             Debug.Log("업그레이드");
-            Player.GetComponent<Player>().PlayerCoinMinus(UpgradePrice[index]);
-            UpgradePrice[index] += (index * 100);
+            Player.GetComponent<Player>().PlayerCoinMinus(UpgradePrice);
+            UpgradePrice += 100;
         }
     }
 
