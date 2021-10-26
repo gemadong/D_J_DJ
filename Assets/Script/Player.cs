@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
         {
             Jump();
         }
-        if (Input.GetMouseButton(0) && !isSwap&& (HasWeapon[1]|| HasWeapon[2]|| HasWeapon[3]))
+        if (Input.GetMouseButton(0) && !isSwap)
         {
             Attack();
         }
@@ -205,9 +205,9 @@ public class Player : MonoBehaviour
     private void Attack()
     {
 
-      //  if (equipWeapon.type == global::Weapon.Type.Hand && !isAttack) { }
+        if (equipWeapon.type == global::Weapon.Type.Hand && !isAttack) { }
 
-         if (equipWeapon.type == global::Weapon.Type.SwingWeapon && !isAttack && !isReLoding)
+        else if (equipWeapon.type == global::Weapon.Type.SwingWeapon && !isAttack && !isReLoding)
         {
             isAttack = true;
             BodyAnima.SetTrigger("DoSwing");
