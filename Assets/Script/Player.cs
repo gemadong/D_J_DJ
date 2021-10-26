@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     private bool isGround;  //�������� Ȯ��
     private bool isjump = true;
     private float jumpForce = 3.0f;
-    private float hp = 100f;
+    private float hp = 10000f;
     private float curhp = 100f;
     private float PlayerwalkSpeed = 6f;
     private float PlayerRunSpeed = 12f;

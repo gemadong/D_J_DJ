@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1410637361264434776}
+  - component: {fileID: 3833204133083841795}
   - component: {fileID: 1410637361264434781}
   - component: {fileID: 1410637361264434782}
   - component: {fileID: 1410637361264434783}
@@ -34,6 +35,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3833204133083841795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410637361264434777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f2cec5335904f47b5c145eb55c7f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolingprefab: {fileID: 0}
 --- !u!135 &1410637361264434781
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -168,7 +182,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 45
   Damage: 3
-  Dir: {fileID: 0}
 --- !u!54 &1410637361264434780
 Rigidbody:
   m_ObjectHideFlags: 0

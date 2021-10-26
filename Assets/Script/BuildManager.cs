@@ -129,7 +129,7 @@ public class BuildManager : MonoBehaviour
 
     public void ShopClose()
     {
-        Shop.active = false;
+        Shop.SetActive(false);
     }
 
     public void WeaponOpen()
