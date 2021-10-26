@@ -30,6 +30,7 @@ public class MachineGun : Weapon
     IEnumerator Shoot()
     {
         yield return new WaitForSeconds(0.1f);
+        Pr.Play();
         GameObject bullet = Instantiate(Bullet, BulletPos.position, BulletPos.rotation);
     }
 }

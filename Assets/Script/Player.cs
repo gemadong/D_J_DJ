@@ -11,10 +11,10 @@ public class Player : MonoBehaviour
     private Rigidbody PRb = null;
     private BoxCollider boxCollider = null;
 
-    private Animator PAnima = null; // ÇÏÃ¼ ¾Ö´Ï¸ÞÀÌ¼Ç
+    private Animator PAnima = null; // ï¿½ï¿½Ã¼ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
     [SerializeField] private GameObject Leg;
 
-    private Animator BodyAnima = null; //»óÃ¼ ¾Ö´Ï¸ÞÀÌ¼Ç
+    private Animator BodyAnima = null; //ï¿½ï¿½Ã¼ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
     [SerializeField] private Transform Body;
 
 
@@ -22,17 +22,17 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject Charactor;
 
     [SerializeField] private GameObject[] Weapon = null;
-    [SerializeField] private bool[] HasWeapon = null;         //ÇöÀç ¼ÒÁö ¹«±â
-    private Weapon equipWeapon = null;                  //ÀåÂøÁßÀÎ ¹«±â
+    [SerializeField] private bool[] HasWeapon = null;         //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private Weapon equipWeapon = null;                  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private int WeaponIndex = 0;
 
     private bool isSwap = false;
     private bool isAttack = false;
     private bool SweapDelay = false;
-    private bool isReLoding = false; // ÃÑ¾ËÀÌ ÀåÀüÁßÀÎÁö È®ÀÎ
+    private bool isReLoding = false; // ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 
     private bool isRun = false;
-    private bool isGround;  //Á¡ÇÁ°¡´É È®ÀÎ
+    private bool isGround;  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
     private bool isjump = true;
     private float jumpForce = 3.0f;
     private float hp = 100f;
@@ -71,19 +71,19 @@ public class Player : MonoBehaviour
     }
     private void LookAt()
     {
-        //¸¶¿ì½ºÀÇ ÀÌµ¿°ª ÁÂÇ¥ ÀúÀå
+        //ï¿½ï¿½ï¿½ì½ºï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½
         Vector2 mouseDelat = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-        Vector3 CamAngle = Cam.rotation.eulerAngles; //Ä«¸Þ¶ó ¾Þ±ÛÀ» º¯¼ö·Î ÀúÀå
+        Vector3 CamAngle = Cam.rotation.eulerAngles; //Ä«ï¿½Þ¶ï¿½ ï¿½Þ±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         float X = CamAngle.x - mouseDelat.y;
 
-        //Ä«¸Þ¶ó »óÇÏÀÇ Á¦ÇÑ
+        //Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (X < 180f) X = Mathf.Clamp(X, -1f, 35f);
         else X = Mathf.Clamp(X, 310f, 361f);
 
-        //Ä«¸Þ¶ó È¸Àü
+        //Ä«ï¿½Þ¶ï¿½ È¸ï¿½ï¿½
         Cam.rotation = Quaternion.Euler(X, CamAngle.y + mouseDelat.x, CamAngle.z).normalized;
 
-        //Ä³¸¯ÅÍ »óÇÏ È¸Àü
+        //Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½
         Body.rotation = Quaternion.Euler(X, CamAngle.y + mouseDelat.x, 0f).normalized;
         //Debug.Log(Body.rotation.x);
     }
@@ -108,7 +108,7 @@ public class Player : MonoBehaviour
         {
             isReLoding = true;
             Invoke("ReLoadingDelay", 1.0f);
-            Debug.Log("ÀåÀüÁß!");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
             BodyAnima.SetTrigger("ReLoding");
         }
     }
@@ -120,22 +120,22 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        //Ä³¸¯ÅÍÀÇ ÀÌµ¿ ÀÔ·Â°ª
+        //Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Ô·Â°ï¿½
         float MoveX = Input.GetAxisRaw("Vertical");
         float MoveZ = Input.GetAxisRaw("Horizontal");
         Vector3 PlayerMove = new Vector3(MoveX, 0f, MoveZ).normalized;
 
-        //Ä³¸¯ÅÍ°¡ ¹Ù¶óº¼ ¹æÇâ¼³Á¤
+        //Ä³ï¿½ï¿½ï¿½Í°ï¿½ ï¿½Ù¶ï¿½ ï¿½ï¿½ï¿½â¼³ï¿½ï¿½
         Vector3 Lookforward = new Vector3(Cam.forward.x, 0f, Cam.forward.z).normalized;
         Vector3 LookRight = new Vector3(Cam.right.x, 0f, Cam.right.z).normalized;
         Vector3 MoveDir = Lookforward * MoveX + LookRight * MoveZ;
 
-        //ÇÃ·¹ÀÌ¾îÀÇ forward¿Í ¿òÁ÷ÀÓ
+        //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ forwardï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         Charactor.transform.forward = Lookforward;
         this.transform.position += MoveDir * (isRun ? PlayerRunSpeed : PlayerwalkSpeed) * Time.deltaTime;
 
         ////////////////////////////////////////////////
-        //¾Ö´Ï¸ÞÀÌ¼Ç
+        //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
 
         PAnima.SetBool("isWalk", PlayerMove.magnitude != 0);
         PAnima.SetBool("isRun", Input.GetKey(KeyCode.LeftShift));
@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
     }
     private bool IsGround()
     {
-        //RayCast¸¦ ÀÌ¿ëÇÏ¿© ÇÃ·¹ÀÌ¾îÀÇ ¾Æ·¡ÂÊ¿¡ ´ê´Â °ÍÀÌ ÀÖ´ÂÁö È®ÀÎ.
+        //RayCastï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½Æ·ï¿½ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½.
         isGround = Physics.Raycast(transform.position, Vector3.down, boxCollider.bounds.extents.y + 0.1f);
         return isGround;
     }
@@ -248,7 +248,7 @@ public class Player : MonoBehaviour
     }
 
 
-    //µ¥¹ÌÁö ¹Þ±â
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ±ï¿½
     public void Damage(int _dmg)
     {
         hp -= _dmg;

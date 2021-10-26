@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private static GameManager Instance = null;
-    //°ÔÀÓ ½ºÅ×ÀÌÁö °ü¸®¸¦ À§ÇÑ ½Ì±ÛÅÏ
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½
 
     public Transform Sun = null;
     public GameObject[] Cam = null;
@@ -86,8 +86,8 @@ public class GameManager : MonoBehaviour
     {
         DayStart_ = true;
         Day();
-        Debug.Log("Å¬¸®¾î!");
-        Debug.Log("ÇÏ·ç½ÃÀÛ");
+        Debug.Log("Å¬ï¿½ï¿½ï¿½ï¿½!");
+        Debug.Log("ï¿½Ï·ï¿½ï¿½ï¿½ï¿½");
     }
 
     public void DayStart()
@@ -100,7 +100,6 @@ public class GameManager : MonoBehaviour
             stage++;
             ZombieSpawnManager.GetComponent<ZombieSpawnManager>().ZombieSpawnStart();
             ZombieSpawnManager.GetComponent<ZombieSpawnManager>().SpawnFinish = false;
-            Debug.Log("ÇÏ·ç ³¡");
             Night();
             DayTime_T.gameObject.SetActive(false);
             DayTime_ = 0;

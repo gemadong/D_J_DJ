@@ -8,6 +8,9 @@ public class LazerGun : Weapon
     private float LazerTime = 0;
     private LineRenderer lr = null;
     private bool LazerOnGoing = false;
+    [SerializeField] private GameObject LazerBullet = null;
+
+    private Vector3 LazerPos;
     void Awake()
     {
         this.type = Type.Gun;
@@ -17,28 +20,32 @@ public class LazerGun : Weapon
         currentbullet = 5;
         CanhaveMaxCount = 30;
         HaveBulletInPocket = 90;
+        LazerBullet.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(currentbullet);
 
+        LazerBullet.transform.position = LazerPos;
         if (currentbullet > 0)
         {
             Attack();
             if (Input.GetMouseButtonDown(0))
             {
-                Bullet.SetActive(true);
+                LazerBullet.SetActive(true) ;
                 lr.enabled = true;
                 LazerOnGoing = true;
+                Pr.Play();
+               
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                Bullet.SetActive(false);
+                LazerBullet.SetActive(false);
                 lr.enabled = false;
                 LazerOnGoing = false;
                 LazerTime = 0;
+                Pr.Stop();
             }
         }
 
@@ -47,10 +54,6 @@ public class LazerGun : Weapon
     {
         currentbullet--;
     }
-
-
-
-
 
     public override void Attack()
     {
@@ -61,9 +64,17 @@ public class LazerGun : Weapon
             if (hit.collider)
             {
                 lr.SetPosition(1, hit.point);
+                LazerPos = hit.point;
+              
+
             }
         }
-        else lr.SetPosition(1, BulletPos.transform.forward * 5000);
+        else
+        {
+            lr.SetPosition(1, BulletPos.transform.forward * 5000);
+            LazerPos = BulletPos.transform.forward * 5000;
+
+        }
     }
 
 }
