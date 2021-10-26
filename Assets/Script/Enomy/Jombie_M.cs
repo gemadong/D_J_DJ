@@ -6,15 +6,16 @@ public class Jombie_M : Jombie
 {
     public GameObject jombie_N;
     Vector3 diepos;
-    
+    bool isdie = true;
+
     protected override void Update()
     {
         base.Update();
-        if (state== JombieState.Die)
+        if (state== JombieState.Die&&isdie)
         {
+            isdie = false;
             DieMotion();
         }
-       
     }
 
     void DieMotion()

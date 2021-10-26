@@ -16,6 +16,7 @@ public class Jombie : MonoBehaviour
     public Animator ZomAni;
     public Rigidbody Rb = null;
     private BoxCollider BC = null;
+    float superTime = 1f;
 
 
     public event Action onDeath;
@@ -32,12 +33,16 @@ public class Jombie : MonoBehaviour
     {
         ZomAni = GetComponent<Animator>();
         Rb = GetComponent<Rigidbody>();
-        BC = GetComponent<BoxCollider>();
     }
 
     protected virtual void Update()
     {
         FindClosestPlayer();
+        superTime += Time.deltaTime;
+        if(superTime <= 0)
+        {
+            BC = GetComponent<BoxCollider>();
+        }
         switch (state)
         {
             case JombieState.Follow:

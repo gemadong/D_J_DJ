@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         //>>>>>>> Stashed changes
 
         Invoke("Day_", 3.0f);
+        Day();
 
         if (null == Instance) instance = this;
         else instance = this;
