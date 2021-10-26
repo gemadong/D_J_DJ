@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hammer : Weapon
 {
-    
+    [SerializeField] TrailRenderer Tr = null;
     void Awake()
     {
         this.type = Type.SwingWeapon;
@@ -14,6 +14,7 @@ public class Hammer : Weapon
         AtkRange.enabled = false;
         NuckbackPower = 250.0f;
         NuckbackUpPower = 3.0f;
+        Tr.enabled = false;
     }
 
       override public void Attack()
@@ -22,11 +23,14 @@ public class Hammer : Weapon
     }
     IEnumerator SwingAttack()
     {
+        Tr.enabled = false;
         this.AtkRange.enabled = false;
         yield return new WaitForSeconds(0.4f);
         this.AtkRange.enabled = true;
+        Tr.enabled = true;
         yield return new WaitForSeconds(0.5f);
         this.AtkRange.enabled = false;
+        Tr.enabled = false;
     }
 
  

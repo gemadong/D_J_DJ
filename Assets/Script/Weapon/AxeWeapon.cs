@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AxeWeapon : Weapon
 {
- 
+    [SerializeField] private TrailRenderer Tr = null;
     void Awake()
     {
         this.type = Type.SwingWeapon;
@@ -12,7 +12,10 @@ public class AxeWeapon : Weapon
         AtkDelay = 1.3f;
         AtkRange = GetComponent<BoxCollider>();
         AtkRange.enabled = false;
+        Tr.enabled = false;
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -26,9 +29,12 @@ public class AxeWeapon : Weapon
     IEnumerator SwingAttack()
     {
         this.AtkRange.enabled = false;
+        Tr.enabled = false;
         yield return new WaitForSeconds(0.3f);
         this.AtkRange.enabled = true;
+        Tr.enabled = true ;
         yield return new WaitForSeconds(0.5f);
         this.AtkRange.enabled = false;
+        Tr.enabled = false;
     }
 }
