@@ -19136,6 +19136,7 @@ MonoBehaviour:
   Cam: {fileID: 1476500975}
   Charactor: {fileID: 404327039}
   Weapon:
+  - {fileID: 1182791380}
   - {fileID: 1012802842}
   - {fileID: 1973174141}
   - {fileID: 960859812}
@@ -19145,7 +19146,7 @@ MonoBehaviour:
   - {fileID: 218122055}
   - {fileID: 736489752}
   - {fileID: 333027730}
-  HasWeapon: 010101010101010101
+  HasWeapon: 01010101010101010101
   Coin: 0
 --- !u!4 &365754084
 Transform:

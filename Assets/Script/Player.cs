@@ -40,10 +40,7 @@ public class Player : MonoBehaviour
     private float PlayerwalkSpeed = 6f;
     private float PlayerRunSpeed = 12f;
 
-    private int ZombieSpawnCount = 20;
-    private int PlayerKill = 0;
-    private int Stage = 0;
-    public int Coin = 0;
+    public int PlayerCoin = 55000;
 
     void Awake()
     {
@@ -60,14 +57,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(PlayerCoin);
         
         Hpbar();
-        if (PlayerKill == ZombieSpawnCount) StageClear();
 
         LookAt();
         CharactorMotion();
         hptext.text = hp.ToString();
-        Cointext.text = Coin.ToString();
+        Cointext.text = PlayerCoin.ToString();
     }
     private void LookAt()
     {
@@ -149,7 +146,7 @@ public class Player : MonoBehaviour
     }
     private bool IsGround()
     {
-        //RayCast�� �̿��Ͽ� �÷��̾��� �Ʒ��ʿ� ��� ���� �ִ��� Ȯ��.
+
         isGround = Physics.Raycast(transform.position, Vector3.down, boxCollider.bounds.extents.y + 0.1f);
         return isGround;
     }
@@ -272,12 +269,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void StageClear()
-    {
-        ZombieSpawnCount += 5;
-        Stage++;
-        PlayerKill = 0;
-    }
 
     private void Hpbar()
     {
@@ -298,6 +289,16 @@ public class Player : MonoBehaviour
     public void JumpForceUp()
     {
         jumpForce += 0.3f;
+    }
+
+    public int SetCoin()
+    {
+        return PlayerCoin;
+    }
+
+    public void GetCoin(int value)
+    {
+        PlayerCoin -= value;
     }
 
     
