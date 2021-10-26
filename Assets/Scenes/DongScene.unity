@@ -69049,7 +69049,7 @@ MonoBehaviour:
   - {fileID: 311659954}
   - {fileID: 1157748996}
   - {fileID: 529048931}
-  Player: {fileID: 0}
+  Player: {fileID: 365754084}
   hpbar_boss: {fileID: 1064266386}
   hptext_boss: {fileID: 1404902925}
   SpawnFinish: 0
@@ -79804,6 +79804,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1677135346110025777, guid: f992fa67ef3fcc847b46aca98b87b33e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 365754083}
     - target: {fileID: 1677135346110025779, guid: f992fa67ef3fcc847b46aca98b87b33e, type: 3}
       propertyPath: m_Name
       value: Zombie_M
