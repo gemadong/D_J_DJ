@@ -12,6 +12,8 @@ public class Bazukar : Weapon
         currentbullet = 2;
         CanhaveMaxCount = 2;
         HaveBulletInPocket = 3;
+        AtkDamage = 15;
+        UpgradeDamage = 3;
     }
 
     public override void Attack()

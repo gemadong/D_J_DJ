@@ -65,10 +65,7 @@ public class Upgrade : MonoBehaviour
         UpgradePrice_Cha_Jump += 100;
     }
 
-    public void BuyBullet(int WeaponNum, int BullCount)
-    {
-        Weapon[WeaponNum].GetComponent<Weapon>().BuyBullet(BullCount);
-    }
+   
 
 
 }

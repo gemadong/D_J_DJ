@@ -23,9 +23,15 @@ public class Weapon : MonoBehaviour
 
     public ParticleSystem Pr = null;
 
+    protected int UpgradeDamage = 0;
+
     virtual public void Attack()
     { }
 
+    private void Update()
+    {
+        Debug.Log(AtkDamage);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Zombie"))
@@ -50,16 +56,15 @@ public class Weapon : MonoBehaviour
         }
     }
 
-
-
-    public void DamageUp(int value)
+    public void DamageUp()
     {
-        AtkDamage += value;
+        Debug.Log("공격력 업글");
+        AtkDamage += UpgradeDamage;
     }
 
-    public void BuyBullet(int value)
+    public void BuyBullet()
     {
-        HaveBulletInPocket += value;
+        HaveBulletInPocket += CanhaveMaxCount;
     }
 
 

@@ -16,8 +16,9 @@ public class Sawing : Weapon
             AtkRange = GetComponent<BoxCollider>();
             AtkRange.enabled = false;
             PS.Stop();
-        
-        }
+        UpgradeDamage = 1;
+
+    }
     
 
     // Update is called once per frame

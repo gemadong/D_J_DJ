@@ -52,8 +52,8 @@ public class ZombieSpawnManager : MonoBehaviour
         {
             int ZombieNum = Random.Range(0, StageNum % 5);
 
-            Debug.Log("좀비출현!" + i);
-            Debug.Log("stage" + StageNum);
+          //  Debug.Log("좀비출현!" + i);
+          //  Debug.Log("stage" + StageNum);
             int SpawnNum = Random.Range(0, 8);
 
             GameObject Zom = Instantiate(ZombieSort[ZombieNum], ZombieSpawnPos[SpawnNum].position, Quaternion.identity);

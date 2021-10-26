@@ -18,6 +18,8 @@ public class FireGun : Weapon
         currentbullet = 30;
         CanhaveMaxCount = 30;
         HaveBulletInPocket = 0;
+        AtkDamage = 3;
+        UpgradeDamage = 1;
     }
 
     // Update is called once per frame

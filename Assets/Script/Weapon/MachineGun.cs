@@ -12,6 +12,7 @@ public class MachineGun : Weapon
         HaveBulletInPocket = 0;
         this.type = Type.Gun;
         AtkDelay = 0.15f;
+        UpgradeDamage = 1;
     }
 
     // Update is called once per frame

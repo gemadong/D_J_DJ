@@ -13,6 +13,7 @@ public class AxeWeapon : Weapon
         AtkRange = GetComponent<BoxCollider>();
         AtkRange.enabled = false;
         Tr.enabled = false;
+        UpgradeDamage = 3;
     }
 
 
