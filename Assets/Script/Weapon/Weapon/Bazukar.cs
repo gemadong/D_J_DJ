@@ -16,6 +16,11 @@ public class Bazukar : Weapon
         UpgradeDamage = 3;
     }
 
+    private void Update()
+    {
+        Debug.Log("µ¥¹ÌÁö" + AtkDamage);
+    }
+
     public override void Attack()
     {
         if (currentbullet > 0)

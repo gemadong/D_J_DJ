@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 623053656574031237}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 1183109734797905563}
   - component: {fileID: 1183109734797905536}
   - component: {fileID: 1183109734797905537}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bos_1
   m_TagString: Zombie
   m_Icon: {fileID: 0}
@@ -96,8 +96,6 @@ MonoBehaviour:
   Rb: {fileID: 0}
   isAttack: 1
   state: 0
-  hpbar_boss: {fileID: 7860980732948350684, guid: ac88cb8c19d30684e8639c42569cc29e, type: 3}
-  hptext_boss: {fileID: 8013291386558081833, guid: 4d69e20d3be13024cb6c7ab83b6b09dd, type: 3}
 --- !u!65 &1183109734797905563
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -155,7 +153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1183109735551613481}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shorlder_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +187,7 @@ GameObject:
   - component: {fileID: 436943579516843599}
   - component: {fileID: 2332820971866372515}
   - component: {fileID: 189498384551584264}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.044
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +268,7 @@ GameObject:
   - component: {fileID: 2573603603105256612}
   - component: {fileID: 6606469917317015615}
   - component: {fileID: 4154313533303135508}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.053
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +348,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4694005802914926475}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +381,7 @@ GameObject:
   - component: {fileID: 8657874054671137762}
   - component: {fileID: 8963419759327040165}
   - component: {fileID: 1343848236586884633}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.054
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +463,7 @@ GameObject:
   - component: {fileID: 5986844148578125919}
   - component: {fileID: 4996553648342133291}
   - component: {fileID: 7844326311052354737}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +544,7 @@ GameObject:
   - component: {fileID: 339057864220459199}
   - component: {fileID: 2849391243765611943}
   - component: {fileID: 8017928494497795120}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +628,7 @@ GameObject:
   - component: {fileID: 5725244327034658022}
   - component: {fileID: 5401554735214752444}
   - component: {fileID: 1442467331390434427}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: L_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,7 +709,7 @@ GameObject:
   - component: {fileID: 1331252278275231636}
   - component: {fileID: 4713564092314234646}
   - component: {fileID: 4928198979874956455}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -792,7 +790,7 @@ GameObject:
   - component: {fileID: 5106326303337612697}
   - component: {fileID: 1784743336625393590}
   - component: {fileID: 4996052814612508738}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +871,7 @@ GameObject:
   - component: {fileID: 2197890160616972123}
   - component: {fileID: 422364720265625408}
   - component: {fileID: 3192732524212895943}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.037
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -952,7 +950,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3656889200989220354}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sholder_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -984,7 +982,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7450722863163439692}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,7 +1013,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 419474299682894451}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1049,7 +1047,7 @@ GameObject:
   - component: {fileID: 1710228123809708294}
   - component: {fileID: 7474532432780658622}
   - component: {fileID: 158139759911420166}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1131,7 +1129,7 @@ GameObject:
   - component: {fileID: 6346415391887329594}
   - component: {fileID: 4109859302752791784}
   - component: {fileID: 6351451036705473987}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rfoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1212,7 +1210,7 @@ GameObject:
   - component: {fileID: 3850869454807247070}
   - component: {fileID: 6610381851717368474}
   - component: {fileID: 8808123366371019697}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

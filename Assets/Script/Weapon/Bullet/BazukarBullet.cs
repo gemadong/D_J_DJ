@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BazukarBullet : Bullet
 {
-
+    [SerializeField] private GameObject boomb = null;
     void Awake()
     {
         Damage = 20;
@@ -20,4 +20,25 @@ public class BazukarBullet : Bullet
     {
         Shoot();
     }
+
+    private void OnDestroy()
+    {
+        Instantiate(boomb, this.transform.position,Quaternion.identity);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Plane"))
+        {
+            Instantiate(boomb, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject, 0.5f);
+        }
+        if (other.CompareTag("Zombie"))
+        {
+            Instantiate(boomb, this.transform.position, Quaternion.identity);
+            other.GetComponent<Jombie>().Damage(Damage);
+            Destroy(this.gameObject, 0.5f);
+        }
+    }
+
 }

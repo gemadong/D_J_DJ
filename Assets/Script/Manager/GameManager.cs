@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    //private static GameManager Instance = null;
-    //���� �������� ������ ���� �̱���
-
+   
     public Transform Sun = null;
     public GameObject[] Cam = null;
     public static GameManager instance;

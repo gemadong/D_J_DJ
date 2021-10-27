@@ -9,10 +9,15 @@ public class LazerGun : Weapon
     private LineRenderer lr = null;
     private bool LazerOnGoing = false;
     [SerializeField] private GameObject LazerBullet = null;
+    private SphereCollider Sc = null;
+
+    private bool isFire = false;
+    private float TIme_ = 0;
 
     private Vector3 LazerPos;
     void Awake()
     {
+        Sc = LazerBullet.GetComponent<SphereCollider>();
         this.type = Type.Gun;
         AtkDelay = 0f;
         lr = this.GetComponent<LineRenderer>();
@@ -29,6 +34,19 @@ public class LazerGun : Weapon
     void Update()
     {
 
+        if (isFire)
+        {
+            StartCoroutine("LazerShoot");
+            TIme_ += Time.deltaTime;
+           
+        }
+        else
+        {
+            StopCoroutine("LazerShoot");
+            TIme_ = 0;
+        }
+
+
         LazerBullet.transform.position = LazerPos;
         if (currentbullet > 0)
         {
@@ -37,6 +55,7 @@ public class LazerGun : Weapon
             {
                 LazerBullet.SetActive(true) ;
                 lr.enabled = true;
+                isFire = true;
                 LazerOnGoing = true;
                 Pr.Play();
                
@@ -45,6 +64,7 @@ public class LazerGun : Weapon
             {
                 LazerBullet.SetActive(false);
                 lr.enabled = false;
+                isFire = false;
                 LazerOnGoing = false;
                 LazerTime = 0;
                 Pr.Stop();
@@ -75,8 +95,18 @@ public class LazerGun : Weapon
         {
             lr.SetPosition(1, BulletPos.transform.forward * 5000);
             LazerPos = BulletPos.transform.forward * 5000;
-
         }
+    }
+
+    IEnumerator LazerShoot()
+    {
+        Sc.enabled = true;
+
+        yield return new WaitForSeconds(0.5f);
+        Sc.enabled = false;
+
+        yield return new WaitForSeconds(0.5f);
+
     }
 
 }

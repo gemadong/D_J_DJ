@@ -13,9 +13,12 @@ public class Bos_1 : Jombie
         hp = 50f;
         speed = 6f;
         attackPower = 30;
+        HpBarUi.Hpbarui.OpenBoss1Hp();
     }
     protected override void Update()
     {
+        HpBarUi.Hpbarui.GetBoss1Hp(hp);
+
         FindClosestPlayer();
         switch (state)
         {
@@ -26,6 +29,7 @@ public class Bos_1 : Jombie
                 Attack();
                 break;
             case JombieState.Die:
+                HpBarUi.Hpbarui.CloseBoss1Hp();
                 StartCoroutine("Die");
                 break;
             case JombieState.Jump:
@@ -70,4 +74,6 @@ public class Bos_1 : Jombie
         //Rb.isKinematic = false;
         //ZomAni.SetBool("Jump", false);
     }
+
+
 }
