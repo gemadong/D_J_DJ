@@ -117,6 +117,7 @@ public class Jombie : MonoBehaviour
             state = JombieState.Follow;
             currentTime = 0;
             isAttack = true;
+
         }
     }
 

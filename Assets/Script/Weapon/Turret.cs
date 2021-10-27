@@ -19,6 +19,8 @@ public class Turret : MonoBehaviour
     [SerializeField] private Transform BulletPos1 = null;
     [SerializeField] private Transform BulletPos2 = null;
 
+    [SerializeField] private GameObject Turretbullet = null;
+
     //공격할 대상의 위치
     private Transform FinalTarget = null;
 
@@ -104,21 +106,24 @@ public class Turret : MonoBehaviour
         isShoot = false;
         if (bulletNum == 1)
         {
-            var bullet = BulletPool.Turret1Ins();
-            bullet.transform.position = BulletPos1.position;
-            bullet.transform.forward = BulletPos1.forward;
+            //var bullet = BulletPool.Turret1Ins();
+            //bullet.transform.position = BulletPos1.position;
+            //bullet.transform.forward = BulletPos1.forward;
+            var bullet = Instantiate(Turretbullet, BulletPos1.position, Quaternion.identity);
             StartCoroutine("ShootDelay");
         }
         else
         {
-            var bullet = BulletPool.Turret2Ins();
-            bullet.transform.position = BulletPos1.position;
-            bullet.transform.forward = BulletPos1.forward;
+            var bullet = Instantiate(Turretbullet, BulletPos1.position, Quaternion.identity);
+            var bullet2 = Instantiate(Turretbullet, BulletPos2.position, Quaternion.identity);
+            //var bullet = BulletPool.Turret2Ins();
+            //bullet.transform.position = BulletPos1.position;
+            //bullet.transform.forward = BulletPos1.forward;
 
-            var bullet2 = BulletPool.Turret2Ins();
-            bullet2.transform.position = BulletPos2.position;
-            bullet2.transform.forward = BulletPos2.forward;
-        StartCoroutine("ShootDelay2");
+            //var bullet2 = BulletPool.Turret2Ins();
+            //bullet2.transform.position = BulletPos2.position;
+            //bullet2.transform.forward = BulletPos2.forward;
+            StartCoroutine("ShootDelay2");
         }
     }
 

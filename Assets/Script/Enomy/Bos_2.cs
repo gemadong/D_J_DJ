@@ -17,11 +17,12 @@ public class Bos_2 : Jombie
         attackPower = 20;
         sight = 5.6f;
         atkRng = 5.5f;
-
+        HpBarUi.Hpbarui.OpenBoss2Hp();
     }
     protected override void Update()
     {
-        Debug.Log(state);
+        HpBarUi.Hpbarui.GetBoss2Hp(hp);
+      
         FindClosestPlayer();
         delayTime += Time.deltaTime;
 
@@ -47,6 +48,7 @@ public class Bos_2 : Jombie
                 }
                 break;
             case JombieState.Die:
+                HpBarUi.Hpbarui.CloseBoss2Hp();
                 StartCoroutine("Die");
                 break;
 
@@ -98,6 +100,9 @@ public class Bos_2 : Jombie
             isAttack_1 = true;
         }
     }
+
+
+
 }
 
 

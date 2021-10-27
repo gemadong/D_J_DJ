@@ -26,8 +26,9 @@ private Rigidbody Brb = null;
     {
         
         yield return new WaitForSeconds(1.0f);
-        BulletPool.Returnbullet(this.gameObject);
-        
+        Destroy(this.gameObject);
+
+
     }
 
     protected virtual void Shoot()
@@ -39,10 +40,13 @@ private Rigidbody Brb = null;
         if (other.CompareTag("Zombie")) 
         {
             other.GetComponent<Jombie>().Damage(Damage);
+            Destroy(this.gameObject);
             Attack();
         }
 
+
     }
+
 
     protected virtual void Attack() { }
 

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Poison
   - Zombie
+  - Plane
   layers:
   - Default
   - TransparentFX

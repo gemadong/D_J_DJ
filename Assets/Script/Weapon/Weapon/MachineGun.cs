@@ -32,9 +32,9 @@ public class MachineGun : Weapon
     {
         yield return new WaitForSeconds(0.1f);
         Pr.Play();
-        var bullet = BulletPool.MachinGunIns();
-        bullet.transform.position = BulletPos.position;
-        bullet.transform.forward = BulletPos.forward;
-            //Instantiate(Bullet, BulletPos.position, BulletPos.rotation);
+        //var bullet = BulletPool.MachinGunIns();
+        //bullet.transform.position = BulletPos.position;
+        //bullet.transform.forward = BulletPos.forward;
+        Instantiate(Bullet, BulletPos.position, BulletPos.rotation);
     }
 }

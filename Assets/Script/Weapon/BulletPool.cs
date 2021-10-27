@@ -5,9 +5,13 @@ using UnityEngine;
 public class BulletPool : MonoBehaviour
 {
     public static BulletPool Bullinstance;
+
     [SerializeField] private GameObject[] BulletPrefab = null;
 
     Queue<GameObject> MachineGunPolling = new Queue<GameObject>();
+    Queue<GameObject> HandGunPolling = new Queue<GameObject>();
+    Queue<GameObject> ShootGunPolling = new Queue<GameObject>();
+    Queue<GameObject> bazukarGunPolling = new Queue<GameObject>();
     Queue<GameObject> Turret1Polling = new Queue<GameObject>();
     Queue<GameObject> Turret2Polling = new Queue<GameObject>();
 
@@ -32,12 +36,13 @@ public class BulletPool : MonoBehaviour
     private void Initialize()
     {
         for (int i = 0; i < 30; i++)
-        {
-            
+        {    
             MachineGunPolling.Enqueue(CreatBullet(0));
             Turret1Polling.Enqueue(CreatBullet(1));
             Turret2Polling.Enqueue(CreatBullet(2));
         }
+
+
      }
     public static GameObject MachinGunIns()
     {
@@ -93,10 +98,7 @@ public class BulletPool : MonoBehaviour
             bull.SetActive(true);
             return bull;
         }
-    }
-
-            
-
+    }       
     public static void Returnbullet(GameObject bullet)
     {
         bullet.gameObject.SetActive(false);
