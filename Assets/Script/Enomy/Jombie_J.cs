@@ -25,7 +25,7 @@ public class Jombie_J : Jombie
                 Attack();
                 break;
             case JombieState.Die:
-                Die();
+                StartCoroutine("Die");
                 break;
             case JombieState.Jump:
                 Jump();
