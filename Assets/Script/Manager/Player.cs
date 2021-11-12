@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -34,23 +35,26 @@ public class Player : MonoBehaviour
     private bool isRun = false;
     private bool isGround;  //�������� Ȯ��
     private bool isjump = true;
-    private float jumpForce = 3.0f;
-    private float hp = 10000f;
+    private float jumpForce = 4.0f;
+    private float hp = 100f;
     private float curhp = 100f;
     private float PlayerwalkSpeed = 6f;
     private float PlayerRunSpeed = 12f;
 
-    public int PlayerCoin = 55000;
+    public int PlayerCoin = 2000;
 
     void Awake()
     {
-        GameManager.instance.players.Add(this);
+        equipWeapon = Weapon[WeaponIndex].GetComponent<Weapon>();
+        while (GameManager.instance!=null)
+            GameManager.instance.players.Add(this);
 
         boxCollider = GetComponent<BoxCollider>();
         PRb = GetComponent<Rigidbody>();
         PAnima = Leg.GetComponentInChildren<Animator>();
         BodyAnima = Body.GetComponent<Animator>();
         hpbar.value = curhp / hp;
+        
     }
 
 
@@ -98,6 +102,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetMouseButton(0) && !isSwap/*&& (HasWeapon[1]|| HasWeapon[2]|| HasWeapon[3])*/)
         {
+            Debug.Log("어택");
             Attack();
         }
 
@@ -204,8 +209,9 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
-
-        //  if (equipWeapon.type == global::Weapon.Type.Hand && !isAttack) { }
+        Debug.Log("공격모션");
+        if (equipWeapon.type == global::Weapon.Type.Hand && !isAttack)
+        { Debug.Log("홀리쉣"); }
 
         if (equipWeapon.type == global::Weapon.Type.SwingWeapon && !isAttack && !isReLoding)
         {
@@ -250,7 +256,11 @@ public class Player : MonoBehaviour
     public void Damage(int _dmg)
     {
         hp -= _dmg;
-        if (hp <= 0) Destroy(gameObject);
+        if (hp <= 0) 
+        {
+            SceneManager.LoadScene(2);
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
     IEnumerator poison()
     {
@@ -270,6 +280,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    public Weapon SetWeapon(int Num)
+    {
+        return Weapon[Num+1].GetComponent<Weapon>();
+    }
 
     private void Hpbar()
     {
@@ -302,5 +316,8 @@ public class Player : MonoBehaviour
         PlayerCoin -= value;
     }
 
-    
+    public void CoinPP(int coin)
+    {
+        PlayerCoin += coin;
+    }
 }

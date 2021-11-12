@@ -50,7 +50,7 @@ public class ZombieSpawnManager : MonoBehaviour
         StageNum = GameManager.instance.StageNum();
         for (int i = 0; i < (StageNum * 5); i++)
         {
-            int ZombieNum = Random.Range(0, StageNum % 5);
+            int ZombieNum = Random.Range(0, StageNum % 6);
 
           //  Debug.Log("좀비출현!" + i);
           //  Debug.Log("stage" + StageNum);

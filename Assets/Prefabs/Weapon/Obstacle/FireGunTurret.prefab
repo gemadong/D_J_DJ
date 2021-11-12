@@ -189,7 +189,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006706336727402630}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.8931361, z: 0, w: 0.44978666}
   m_LocalPosition: {x: 0, y: 2.179, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -198,7 +198,7 @@ Transform:
   - {fileID: 7403155485888857740}
   m_Father: {fileID: 2948527560623846223}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 126.54, z: 0}
 --- !u!1 &2150702836748950180
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +342,7 @@ MonoBehaviour:
     m_Bits: 64
   BulletPos1: {fileID: 7403155485888857740}
   BulletPos2: {fileID: 4829833927480931560}
+  Turretbullet: {fileID: 6973669486211573925, guid: c05c683848feac3419081bc9c12055a4, type: 3}
   bulletNum: 0
   SpinSpeed: 1080
 --- !u!54 &-6538501633723461849

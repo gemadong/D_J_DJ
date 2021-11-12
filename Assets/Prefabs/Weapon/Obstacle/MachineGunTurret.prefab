@@ -364,6 +364,7 @@ MonoBehaviour:
     m_Bits: 64
   BulletPos1: {fileID: 2426947200244720409}
   BulletPos2: {fileID: 0}
+  Turretbullet: {fileID: 7546956376586206952, guid: de7a88be080ce3a4ca0c806fed68dcff, type: 3}
   bulletNum: 1
   SpinSpeed: 1080
 --- !u!65 &-7292274774733038787

@@ -11,12 +11,12 @@ public class Sawing : Weapon
         void Awake()
         {
             this.type = Type.Electric;
-            AtkDamage = 1;
+            AtkDamage = 3;
             AtkDelay = 1.0f;
             AtkRange = GetComponent<BoxCollider>();
             AtkRange.enabled = false;
             PS.Stop();
-        UpgradeDamage = 1;
+        UpgradeDamage = 2;
 
     }
     

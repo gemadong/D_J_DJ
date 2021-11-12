@@ -16,7 +16,7 @@ public class Jombie : MonoBehaviour
     public Animator ZomAni;
     public Rigidbody Rb = null;
     private BoxCollider BC = null;
-    float superTime = 1f;
+    protected int DieCoin = 200;
 
 
     public event Action onDeath;
@@ -39,7 +39,6 @@ public class Jombie : MonoBehaviour
     protected virtual void Update()
     {
         FindClosestPlayer();
-        superTime += Time.deltaTime;
         switch (state)
         {
             case JombieState.Follow:
@@ -151,6 +150,7 @@ public class Jombie : MonoBehaviour
     }
     protected virtual IEnumerator Die()
     {
+ //       player.CoinPP(DieCoin);
         BC.enabled = false;
         ZomAni.SetTrigger("Die");
         Debug.Log("좀비 Die");
@@ -167,6 +167,10 @@ public class Jombie : MonoBehaviour
         Debug.Log("공격 받았다!!");
     }
 
+    public void OnDestroy()
+    {
+        player.CoinPP(DieCoin);
 
+    }
 
 }

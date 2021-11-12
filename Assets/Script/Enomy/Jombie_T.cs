@@ -8,5 +8,7 @@ public class Jombie_T : Jombie
     {
         base.Awake();
         hp = 30f;
+
+        DieCoin = 300;
     }
 }

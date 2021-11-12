@@ -45,8 +45,13 @@ public class BuildManager : MonoBehaviour
     private void Update()
     {
         MousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
-        
-        if (isActivatePreview)
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            BuildSlot.SetActive(false);
+            OpenBuildSlot = false;
+            ShopClose();
+        }
+            if (isActivatePreview)
         {
             if(Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition),out hitinfo))
             {
@@ -120,6 +125,7 @@ public class BuildManager : MonoBehaviour
 
     public void ShopOpen()
     {
+        
         Shop.SetActive(true);
         ShopInUi[0].SetActive(true);
         ShopInUi[1].SetActive(false);
@@ -133,6 +139,7 @@ public class BuildManager : MonoBehaviour
 
     public void WeaponOpen()
     {
+        
         ShopInUi[0].SetActive(true);
         ShopInUi[1].SetActive(false);
         ShopInUi[2].SetActive(false);

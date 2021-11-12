@@ -11,6 +11,7 @@ public class Jombie_J : Jombie
     {
         base.Awake();
         delaytime = 4f;
+        DieCoin = 300;
         //rigid = GetComponent<Rigidbody>();
     }
     protected override void Update()

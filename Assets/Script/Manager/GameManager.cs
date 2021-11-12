@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public List<Player> players;
     public static bool isNight = true;
-    public float DayTime = 5f;
     public int stage=0;
     [SerializeField] private Text zombiecount;
     [SerializeField] private Text Stagecount;
@@ -31,12 +31,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        //<<<<<<< Updated upstream
-        //     //   Cursor.lockState = CursorLockMode.Locked;
-        //=======
-        //        //Cursor.lockState = CursorLockMode.Locked;
-        //>>>>>>> Stashed changes
-
         Invoke("Day_", 3.0f);
         Day();
 
@@ -65,24 +59,25 @@ public class GameManager : MonoBehaviour
         Vector3 rotNight = new Vector3(-90, 0, 0);
         Sun.transform.rotation = Quaternion.Euler(rotNight);
         //StageStart();
+        Cursor.lockState = CursorLockMode.Locked;
     }
     void Day()
     {
+        Cursor.lockState = CursorLockMode.None;
         Cam[0].SetActive(false);
         Cam[1].SetActive(true);
         Vector3 rotDay = new Vector3(45, 45, 0);
         Sun.transform.rotation = Quaternion.Euler(rotDay);
-        //if (DayTime < 0)
-        //{
-        //    Night();
-        //    DayTime = 5f;
-        //}
     }
 
     /// ///////////////////////////////
 
     public void StageClear() 
     {
+
+        if (stage == 6) SceneManager.LoadScene(3);
+
+
         DayStart_ = true;
         Day();
         Debug.Log("Ŭ����!");
@@ -93,7 +88,7 @@ public class GameManager : MonoBehaviour
     {
         DayTime_ += Time.deltaTime;
         DayTime_T.gameObject.SetActive(true);
-        if(DayTime_ >= 3)
+        if(DayTime_ >= 20)
         {
             DayStart_ = false;
             stage++;
@@ -108,6 +103,7 @@ public class GameManager : MonoBehaviour
     public void Day_()
     {
         DayStart_ = true;
+        
     }
 
     public int StageNum()

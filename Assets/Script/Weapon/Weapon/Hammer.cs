@@ -15,7 +15,7 @@ public class Hammer : Weapon
         NuckbackPower = 250.0f;
         NuckbackUpPower = 3.0f;
         Tr.enabled = false;
-        UpgradeDamage = 2;
+        UpgradeDamage = 1;
     }
 
       override public void Attack()

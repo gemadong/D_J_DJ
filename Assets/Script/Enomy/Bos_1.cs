@@ -14,6 +14,7 @@ public class Bos_1 : Jombie
         speed = 6f;
         attackPower = 30;
         HpBarUi.Hpbarui.OpenBoss1Hp();
+        DieCoin = 2000;
     }
     protected override void Update()
     {

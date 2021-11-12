@@ -7,7 +7,11 @@ public class Jombie_M : Jombie
     public GameObject jombie_N;
     Vector3 diepos;
     bool isdie = true;
-
+    protected override void Awake()
+    {
+        base.Awake();
+        DieCoin = 500;
+    }
     protected override void Update()
     {
         base.Update();

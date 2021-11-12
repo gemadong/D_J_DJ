@@ -1276,7 +1276,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC124\uBA85\n- \uB0AE : \uC0C1\uC810 \uC774\uC6A9 (30\uCD08)\n- \uBC24
+  m_Text: "\uC124\uBA85\n- \uB0AE : \uC0C1\uC810 \uC774\uC6A9 (20\uCD08)\n- \uBC24
     : \uC880\uBE44 \uC0AC\uB0E5  \nStage 3, 6 : Boss\n\nGameClear : Boss 6 \uC0AC\uB0E5"
 --- !u!222 &1003080442
 CanvasRenderer:

@@ -109,13 +109,18 @@ public class Turret : MonoBehaviour
             //var bullet = BulletPool.Turret1Ins();
             //bullet.transform.position = BulletPos1.position;
             //bullet.transform.forward = BulletPos1.forward;
-            var bullet = Instantiate(Turretbullet, BulletPos1.position, Quaternion.identity);
+            var bullet = Instantiate(Turretbullet, BulletPos1.position, transform.rotation);
+            bullet.GetComponent<Bullet>().transform.forward = BulletPos1.transform.forward;
             StartCoroutine("ShootDelay");
         }
         else
         {
-            var bullet = Instantiate(Turretbullet, BulletPos1.position, Quaternion.identity);
-            var bullet2 = Instantiate(Turretbullet, BulletPos2.position, Quaternion.identity);
+
+
+            var bullet = Instantiate(Turretbullet, BulletPos1.position, transform.rotation);
+            bullet.GetComponent<Bullet>().transform.forward = BulletPos1.transform.forward;
+            var bullet2 = Instantiate(Turretbullet, BulletPos2.position, transform.rotation);
+            bullet2.GetComponent<Bullet>().transform.forward = BulletPos2.transform.forward;
             //var bullet = BulletPool.Turret2Ins();
             //bullet.transform.position = BulletPos1.position;
             //bullet.transform.forward = BulletPos1.forward;
@@ -137,6 +142,8 @@ public class Turret : MonoBehaviour
         yield return new WaitForSeconds(0.35f);
         isShoot = true;
     }
+
+ 
 
 
 }

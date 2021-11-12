@@ -8,6 +8,7 @@ public class Jombie_S : Jombie
     {
         base.Awake();
         speed = 12f;
+        DieCoin = 300;
     }
     
 }

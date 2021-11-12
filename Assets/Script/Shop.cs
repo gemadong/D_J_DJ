@@ -36,6 +36,7 @@ public class Shop : MonoBehaviour
     private void Update()
     {
         PlayerCoin = Player.GetComponent<Player>().SetCoin();
+        Debug.Log(PlayerCoin);
         //CurrentChaUpgrade();
        
     }
@@ -61,6 +62,7 @@ public class Shop : MonoBehaviour
 
     public void OnClickWeaponDamageUp(int index)
     {
+
         if (PlayerCoin >= UpgradePrice[index])
         {
             Weapon[index].GetComponent<Weapon>().DamageUp();
@@ -85,8 +87,8 @@ public class Shop : MonoBehaviour
         {
             Player.GetComponent<Player>().SpeedUp();
             Player.GetComponent<Player>().PlayerCoinMinus(UpgradePrice_Cha_Speed);
-        }
         UpgradePrice_Cha_Speed += 100;
+        }
         PlayerUpgradeState[1].text = UpgradePrice_Cha_Speed + "¿ø";
     }
 
@@ -97,8 +99,8 @@ public class Shop : MonoBehaviour
         {
             Player.GetComponent<Player>().HpUp();
             Player.GetComponent<Player>().PlayerCoinMinus(UpgradePrice_Cha_Hp);
-        }
         UpgradePrice_Cha_Hp += 100;
+        }
         PlayerUpgradeState[0].text = UpgradePrice_Cha_Hp + "¿ø";
     }
 
@@ -108,8 +110,8 @@ public class Shop : MonoBehaviour
         {
             Player.GetComponent<Player>().JumpForceUp();
             Player.GetComponent<Player>().PlayerCoinMinus(UpgradePrice_Cha_Jump);
-        }
         UpgradePrice_Cha_Jump += 100;
+        }
         PlayerUpgradeState[2].text = UpgradePrice_Cha_Jump + "¿ø";
     }
 

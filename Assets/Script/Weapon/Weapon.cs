@@ -25,8 +25,8 @@ public class Weapon : MonoBehaviour
 
     protected int UpgradeDamage = 0;
 
-    virtual public void Attack()
-    { }
+    virtual public void Attack() { }
+   
 
     private void Update()
     {
